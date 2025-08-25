@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/page";
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,8 +30,8 @@ export default function Home() {
     },
     {
       id: 2,
-      title: "Education for Every Child",
-      description: "Launched a new initiative to provide free education to children in remote villages.",
+      title: "Siddiqui Welfare Society’s Global Foundation Steps Us for Blood Shortages with Donation Camps",
+      description: "The precious resource for survival that ‘blood’ is often goes overlooked until it’s desperately required. Unfortunately, India experiences alarming scarcity of this life-saving drop, thus, throwing recurring challenges for the healthcare sector.",
       image: "/images/top02.png",
     },
     {
@@ -114,26 +115,31 @@ export default function Home() {
     if (!carouselTrackRef.current) return;
 
     const track = carouselTrackRef.current;
-    const cardWidth = track.children[0]?.clientWidth || 0;
+    const cardElement = track.children[0] as HTMLElement;
+    const cardWidth = cardElement?.offsetWidth || 0;
     const gap = 32; // gap-8 = 32px
-    const numVisibleCards = window.innerWidth >= 768 ? 2 : 1; // md:grid-cols-2
-    const slideWidth = (cardWidth * numVisibleCards) + (gap * (numVisibleCards - 1));
+    const numVisibleCards = window.innerWidth >= 768 ? 2 : 1; 
+    const totalCardWidth = cardWidth + gap;
 
     gsap.to(track, {
-      x: -currentSlide * (cardWidth + gap),
+      x: -currentSlide * totalCardWidth,
       duration: 0.8,
       ease: "power2.out",
     });
 
-    const autoSlide = setInterval(() => {
-      setCurrentSlide((prevSlide) => {
-        const nextSlide = (prevSlide + 1) % (topStories.length - numVisibleCards + 1);
-        return nextSlide;
-      });
-    }, 4000); // Auto slide every 4 seconds
+  }, [currentSlide]);
 
-    return () => clearInterval(autoSlide);
-  }, [currentSlide, topStories.length]);
+  const handlePrev = () => {
+    setCurrentSlide((prevSlide) => Math.max(0, prevSlide - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prevSlide) => {
+      const numVisibleCards = window.innerWidth >= 768 ? 2 : 1;
+      const maxSlide = topStories.length - numVisibleCards;
+      return Math.min(maxSlide, prevSlide + 1);
+    });
+  };
 
   return (
     <>
@@ -143,15 +149,15 @@ export default function Home() {
         
         <section className="relative z-10 flex flex-col md:flex-row  w-full max-w-7xl mx-auto py-12 px-5">
           <div className="md:w-1/2 text-center md:text-left px-4 text-white">
-            <h1 ref={heroTextRef} className="text-5xl font-bold leading-tight mb-4 text-red-600">Siddiqui Welfare Society</h1>
+            <h1 ref={heroTextRef} className="text-5xl font-bold leading-tight mb-4 ">Siddiqui Welfare Society</h1>
             
             <div ref={h3SliderRef} className="h-16 overflow-hidden mb-4">
               {sliderHeadings.map((heading, index) => (
-                <h3 key={index} className="text-3xl font-semibold mb-2 text-red-500">{heading}</h3>
+                <h3 key={index} className="text-3xl font-semibold mb-2 ">{heading}</h3>
               ))}
             </div>
 
-            <p className="text-lg mb-8 text-red-400">We bring your ideas to life with cutting-edge technology and creative solutions.</p>
+            {/* <p className="text-lg mb-8 text-red-400">We bring your ideas to life with cutting-edge technology and creative solutions.</p> */}
             <button ref={heroButtonRef} className="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 hover:bg-red-700 shadow-lg">
               Get Started
             </button>
@@ -171,29 +177,43 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">Top Stories</h2>
-          <div className="relative overflow-hidden py-4">
-            <div ref={carouselTrackRef} className="flex transition-transform duration-500 ease-in-out">
-              {topStories.map((story, index) => (
-                <div 
-                  key={story.id} 
-                  className="flex-shrink-0 w-full md:w-1/2 lg:w-1/2 px-4 h-auto"
-                >
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-                    <Image
-                      src={story.image}
-                      alt={story.title}
-                      width={400}
-                      height={250}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{story.title}</h3>
-                      <p className="text-gray-600 text-sm">{story.description}</p>
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div ref={carouselTrackRef} className="flex gap-8">
+                {topStories.map((story, index) => (
+                  <div 
+                    key={story.id} 
+                    className="flex-shrink-0 w-full md:w-[calc(50%-16px)] lg:w-[calc(50%-16px)]"
+                  >
+                    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300  h-[450px] flex flex-col">
+                      <Image
+                        src={story.image}
+                        alt={story.title}
+                        width={400}
+                        height={250}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="p-6 flex-grow overflow-y-auto">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">{story.title}</h3>
+                        <p className="text-gray-600 text-sm">{story.description}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+            <button 
+              onClick={handlePrev} 
+              className="absolute top-1/2 left-0 -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full shadow-md hover:bg-gray-700 transition-colors duration-300 z-10"
+            >
+              <FaChevronLeft />
+            </button>
+            <button 
+              onClick={handleNext} 
+              className="absolute top-1/2 right-0 -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full shadow-md hover:bg-gray-700 transition-colors duration-300 z-10"
+            >
+              <FaChevronRight />
+            </button>
           </div>
         </div>
       </section>
