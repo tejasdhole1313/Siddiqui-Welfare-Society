@@ -1,0 +1,83 @@
+'use client'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { menuItems } from './menu-items'
+import Image from 'next/image'
+
+gsap.registerPlugin(ScrollTrigger)
+
+function Footer() {
+    const footerRef = useRef<HTMLElement>(null)
+
+    useEffect(() => {
+        const footer = footerRef.current
+        if (!footer) return
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: footer,
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        })
+
+        tl.fromTo(footer.querySelectorAll('.footer-col'),
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'power2.out' }
+        )
+    }, [])
+
+    return (
+        <footer ref={footerRef} className="bg-gray-800 text-white py-12 ">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div className="footer-col">
+                        <Image
+                            src="/images/footer.png"
+                            alt="Brand Logo"
+                            width={100}
+                            height={20}
+                            className="object-contain mb-4"
+                        />
+                        <p className="text-gray-400">Good News empowers the generation of tomorrow for a brighter future and hope for every individual.</p>
+                    </div>
+                    <div className="footer-col">
+                        <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+                        <ul>
+                            {menuItems.map((item, index) => (
+                                <li key={index} className="mb-2">
+                                    <a href={item.path} className="text-gray-400 hover:text-white transition-colors duration-300">{item.title}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="footer-col">
+                        <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+                        <p className="text-gray-400">123 Main Street, Anytown, USA</p>
+                        <p className="text-gray-400">Phone: (123) 456-7890</p>
+                        <p className="text-gray-400">Email: info@example.com</p>
+                    </div>
+                    <div className="footer-col">
+                        <h3 className="text-lg font-bold mb-4">Follow Us</h3>
+                        <div className="flex space-x-4">
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaFacebook size={24} /></a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaTwitter size={24} /></a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaInstagram size={24} /></a>
+                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaLinkedin size={24} /></a>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex mt-8 border-t border-gray-700 pt-8  text-gray-400 justify-between">
+                    <p>&copy; 2025 Siddiqui Welfare Society. All rights reserved.</p>
+                    <p className="">Moksha Solutions</p>
+                </div>
+
+            </div>
+        </footer>
+    )
+}
+
+export default Footer
