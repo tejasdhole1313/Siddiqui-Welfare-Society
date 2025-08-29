@@ -1,64 +1,41 @@
 'use client'
 
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { JSX, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaHeart, FaUserGraduate, FaHandHoldingMedical, FaUtensils, FaUsers, FaTooth, FaHeartbeat } from 'react-icons/fa';
+import { stories } from "./lib/stories";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const texts = [
-  "Siddiqui Welfare Society",
-  "Global Medical & Educational Foundation",
-  "Empowering Communities for a Better Tomorrow"
-];
-
-// Top stories data
-const topStories = [
+const slides = [
   {
-    id: 1,
-    category: "Education",
-    title: "Empowering Communities Through Computer Training",
-    description: "Making significant strides in empowering underprivileged communities through a range of educational and skill development programs.",
-    image: "/images/top01.png",
-    date: "10/8/2024",
+    text: "Siddiqui Welfare Society",
+    bg: "/images/bg.jpg"
   },
   {
-    id: 2,
-    category: "Medical",
-    title: "Global Foundation Steps Up for Blood Shortages",
-    description: "India experiences alarming scarcity of this life-saving drop, throwing recurring challenges for the healthcare sector.",
-    image: "/images/top02.png",
-    date: "9/23/2024",
+    text: "Global Medical & Educational Foundation",
+    bg: "/images/bg01.jpg"
   },
   {
-    id: 3,
-    category: "Community",
-    title: "Providing Hope with Free Dialysis Program",
-    description: "Our commendable initiative of providing quality dialysis treatment has enhanced the accessibility for those who are unable to afford it.",
-    image: "/images/top06.png",
-    date: "10/6/2024",
-  },
-  {
-    id: 4,
-    category: "Culture",
-    title: "Empowering Women: The Impact of Sewing Machine Distribution",
-    description: "Our work focuses on supporting women, particularly widows, who often face unique challenges in becoming financially independent.",
-    image: "/images/top04.png",
-    date: "10/6/2024",
-  },
+    text: "Empowering Communities for a Better Tomorrow",
+    bg: "/images/top01.png"
+  }
 ];
 
 export default function Home() {
   const [index, setIndex] = useState(0);
   const mainRef = useRef(null);
 
+  const latestStories = [...stories].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4);
+
   // Hero sliding text
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % texts.length);
+      setIndex((prev) => (prev + 1) % slides.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -94,18 +71,18 @@ export default function Home() {
       const counters = gsap.utils.toArray('.counter');
       counters.forEach((counter: any) => {
         const target = parseInt(counter.dataset.target, 10);
-        gsap.from(counter, {
-          textContent: 0,
+        const counterObj = { val: 0 };
+        gsap.to(counterObj, {
+          val: target,
           duration: 2,
           ease: "power1.inOut",
-          snap: { textContent: 1 },
           scrollTrigger: {
             trigger: counter,
             start: "top 85%",
             toggleActions: "play none none none"
           },
-          onUpdate: function() {
-            counter.innerHTML = Math.ceil(parseFloat(this.targets()[0].textContent)).toLocaleString() + "+";
+          onUpdate: () => {
+            counter.innerHTML = Math.ceil(counterObj.val).toLocaleString() + "+";
           }
         });
       });
@@ -124,41 +101,130 @@ export default function Home() {
     "Food & Meals": <FaUtensils />,
   };
 
+  const impactStats = [
+    { target: 10000, label: "People Helped" },
+    { target: 250, label: "Medical Camps" },
+    { target: 5000, label: "Students Educated" },
+  ];
+
   return (
     <main ref={mainRef} className="bg-white text-gray-800">
 
       {/* HERO SECTION */}
       <section className="relative h-screen flex items-center justify-center text-white text-center overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-        <div
-          className="hero-bg absolute inset-0 bg-cover bg-center scale-110"
-          style={{ backgroundImage: `url('/images/bg.jpg')` }}
-        ></div>
+        <AnimatePresence>
+          <motion.div
+            key={index}
+            className="hero-bg absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${slides[index].bg}')` }}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          ></motion.div>
+        </AnimatePresence>
         <div className="relative z-20 px-4">
           <AnimatePresence mode="wait">
             <motion.h1
               key={index}
-              className="hero-h1 text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+              className="hero-h1 text-5xl md:text-5xl lg:text-6xl font-bold leading-tight"
               initial={{ opacity: 0, y: 30, rotateY: -30 }}
               animate={{ opacity: 1, y: 0, rotateY: 0 }}
               exit={{ opacity: 0, y: -30, rotateY: 30 }}
               transition={{ duration: 0.8 }}
               style={{ textShadow: "2px 2px 8px rgba(0,0,0,0.7)", perspective: "1000px" }}
             >
-              {texts[index]}
+              {slides[index].text}
             </motion.h1>
           </AnimatePresence>
-          <motion.button
-            className="hero-btn mt-8 bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:bg-red-700"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-          >
-            Make a Donation
-          </motion.button>
+         
         </div>
       </section>
+
+      {/* CATEGORY FILTERS */}
+<section className="py-12 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="flex flex-wrap justify-center gap-15 text-bold   ">
+      {[
+        { href: "/stories/top-stories", label: "Top Stories" },
+        { href: "/stories/latest-stories", label: "Latest Stories" },
+        { href: "/stories/activism", label: "Activism" },
+        { href: "/stories/community", label: "Community" },
+        { href: "/stories/culture", label: "Culture" }
+      ].map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="bg-white text-red-600 px-6 py-2 rounded-full font-medium border border-red-600
+                     hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<section className="py-12 bg-white fade-in-section">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Top Stories by Category</h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        "Education",
+        "Medical",
+        "Community",
+        "Culture",
+        "Activism",
+        "Top Stories", // This will pick a top story from all top stories
+      ].map((categoryName) => {
+        let storyToShow = null;
+
+        if (categoryName === "Top Stories") {
+          storyToShow = stories.find((story) => story.topStory);
+        } else {
+          storyToShow = stories.find(
+            (story) => story.category === categoryName && story.topStory
+          );
+
+          if (!storyToShow) {
+            // Fallback: any story from that category
+            storyToShow = stories.find((story) => story.category === categoryName);
+          }
+        }
+
+        if (!storyToShow) return null;
+
+        return (
+          <div
+            key={categoryName}
+            className="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]"
+          >
+            <div className="relative w-full h-56 overflow-hidden">
+              <Image
+                src={storyToShow.image}
+                alt={storyToShow.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">{storyToShow.title}</h3>
+              <p className="text-gray-600 text-base mb-4 line-clamp-3">{storyToShow.description}</p>
+              {/* Optional Link */}
+              {/* <Link href={`/stories/${storyToShow.id}`} className="text-red-600 hover:underline font-medium">
+                Read More
+              </Link> */}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* KEY AREAS OF FOCUS */}
       <section className="py-20 bg-gray-50 fade-in-section">
@@ -188,81 +254,25 @@ export default function Home() {
             Every number represents a life changed, a community empowered, and a future brightened.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8">
-              <h3 data-target="15000" className="counter text-5xl md:text-6xl font-extrabold text-red-600">0</h3>
-              <p className="text-xl font-semibold mt-2">People Helped</p>
-            </div>
-            <div className="p-8">
-              <h3 data-target="75" className="counter text-5xl md:text-6xl font-extrabold text-red-600">0</h3>
-              <p className="text-xl font-semibold mt-2">Medical Camps</p>
-            </div>
-            <div className="p-8">
-              <h3 data-target="5000" className="counter text-5xl md:text-6xl font-extrabold text-red-600">0</h3>
-              <p className="text-xl font-semibold mt-2">Students Educated</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LATEST STORIES SECTION */}
-      <section className="py-20 bg-gray-50 fade-in-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Latest Stories</h2>
-            <p className="text-lg text-gray-600 mt-2">Read about the lives we're transforming together.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {topStories.map(story => (
-              <div key={story.id} className="group bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]">
-                <div className="relative aspect-w-16 aspect-h-9">
-                  <Image
-                    src={story.image}
-                    alt={story.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <span className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">{story.category}</span>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">{story.date}</p>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">{story.title}</h3>
-                  <p className="text-gray-600 leading-relaxed line-clamp-3">{story.description}</p>
-                </div>
+            {impactStats.map((stat) => (
+              <div key={stat.label} className="p-8">
+                <h3
+                  data-target={stat.target}
+                  className="counter text-4xl md:text-6xl font-extrabold text-red-600"
+                >0</h3>
+                <p className="text-xl font-semibold mt-2">{stat.label}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <button className="bg-transparent border-2 border-red-600 text-red-600 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 hover:bg-red-600 hover:text-white">
-              View All Posts
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* NEWSLETTER CTA SECTION */}
-      <section className="bg-red-700 fade-in-section">
-        <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold">Reframe Your Inbox</h2>
-          <p className="text-lg mt-4 mb-8">Subscribe to our newsletter and never miss a story of hope and change.</p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full sm:flex-1 px-5 py-3 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
-              required
-              aria-label="Email"
-            />
-            <button
-              type="submit"
-              className="bg-gray-900 text-white px-8 py-3 rounded-md font-semibold transition-colors duration-300 hover:bg-black"
-              aria-label="Subscribe"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
+   
 
+
+   
+
+   
     </main>
   );
 }

@@ -56,9 +56,9 @@ function Footer() {
                     </div>
                     <div className="footer-col">
                         <h3 className="text-lg font-bold mb-4">Contact Us</h3>
-                        <p className="text-gray-400">123 Main Street, Anytown, USA</p>
-                        <p className="text-gray-400">Phone: (123) 456-7890</p>
-                        <p className="text-gray-400">Email: info@example.com</p>
+                        <p className="text-gray-400">Plot No:84, Arif Housing Society, Chhatrapati Sambhajinagar (Aurangabad), Maharashtra 431001</p>
+                        <p className="text-gray-400">Phone: 91 99605 89100</p>
+                        
                     </div>
                     <div className="footer-col">
                         <h3 className="text-lg font-bold mb-4">Follow Us</h3>
@@ -72,7 +72,7 @@ function Footer() {
                 </div>
                 <div className="flex mt-8 border-t border-gray-700 pt-8  text-gray-400 justify-between">
                     <p>&copy; 2025 Siddiqui Welfare Society. All rights reserved.</p>
-                    <p className="">Moksha Solutions</p>
+                    <p className="">Moksha Solution</p>
                 </div>
 
             </div>
