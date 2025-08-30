@@ -4,8 +4,6 @@ import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FiHeart, FiUsers, FiBook, FiActivity, FiAward, FiGlobe } from 'react-icons/fi'
-
-// Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger)
 }
@@ -129,32 +127,7 @@ useEffect(() => {
 
     
 
-    const activities = [
-        {
-            icon: <FiBook className="w-8 h-8" />,
-            title: 'Educational Support',
-            description: 'Providing scholarships, educational materials, and career guidance to underprivileged students.',
-            color: 'bg-blue-500'
-        },
-        {
-            icon: <FiActivity className="w-8 h-8" />,
-            title: 'Medical Assistance',
-            description: 'Free medical camps, blood donation drives, and healthcare facilities for the needy.',
-            color: 'bg-green-500'
-        },
-        {
-            icon: <FiUsers className="w-8 h-8" />,
-            title: 'Community Development',
-            description: 'Organizing skill development programs and supporting small businesses.',
-            color: 'bg-purple-500'
-        },
-        {
-            icon: <FiHeart className="w-8 h-8" />,
-            title: 'Food Distribution',
-            description: 'Distributing hygienic cooked food to hospitals, orphanages, and needy families.',
-            color: 'bg-red-500'
-        }
-    ]
+
 
     const teamMembers = [
         { name: 'Mohajuddin Siddiqui', role: 'President', image: '/images/team01.png' },
@@ -202,8 +175,8 @@ useEffect(() => {
                         <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
                             <p>
                                 <strong>When asked, which the highest form of knowledge is, Bill Buffett rightly answered – empathy!</strong> 
-                                That's because when we cultivate empathy, our ego gets dissolved and we expand our sense of self. It 
-                                enables us to connect with other's experiences for a shared humanity.
+                                That&apos;s because when we cultivate empathy, our ego gets dissolved and we expand our sense of self. It 
+                                enables us to connect with other&apos;s experiences for a shared humanity.
                             </p>
                             <p>
                                 Siddiqui Welfare Society's Global Foundation bears this ideology as the driving force behind their endeavours. 
@@ -260,9 +233,11 @@ useEffect(() => {
     
     {/* Education */}
     <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-500 overflow-hidden">
-      <img
-        src="/images/Acitivity04.png" // Replace with your actual image path
+      <Image
+        src="/images/Acitivity04.png"
         alt="Educational Assistance"
+        width={1200}
+        height={400}
         className="w-full h-64 object-cover"
       />
       <div className="p-6 border-t-4 border-red-500">
@@ -272,7 +247,7 @@ useEffect(() => {
         </div>
         <p className="text-gray-700 leading-relaxed text-justify">
           One of the biggest challenges persisting in India is proper access to education. Survey shows,
-          around 25% of India's population face this inaccessibility. Siddiqui Welfare Society's Global Foundation
+          around 25% of India&apos;s population face this inaccessibility. Siddiqui Welfare Society&apos;s Global Foundation
           extends financial help to meritorious students from economically weaker families—ensuring their education
           dreams are not compromised by economic hardship.
         </p>
@@ -281,9 +256,11 @@ useEffect(() => {
 
     {/* Medical Assistance */}
     <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-500 overflow-hidden">
-      <img
-        src="/images/top02.png" // Replace with your actual image path
+      <Image
+        src="/images/top02.png"
         alt="Medical Assistance"
+        width={1200}
+        height={400}
         className="w-full h-64 object-cover"
       />
       <div className="p-6 border-t-4 border-red-500">
@@ -293,7 +270,7 @@ useEffect(() => {
         </div>
         <p className="text-gray-700 leading-relaxed text-justify">
           With skyrocketing healthcare costs, underprivileged patients often cannot afford proper treatment.
-          Siddiqui Welfare Society's Global Foundation offers full or partial financial support for critical
+          Siddiqui Welfare Society&apos;s Global Foundation offers full or partial financial support for critical
           medical needs—ensuring that no life is neglected due to lack of funds.
         </p>
       </div>
@@ -312,9 +289,11 @@ useEffect(() => {
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
     {/* Activity 1 */}
     <div>
-      <img
+      <Image
         src="/images/Acitivity01.png" 
         alt="Aiding small businesses"
+        width={1200}
+        height={400}
         className="rounded-lg w-full h-64 object-cover"
       />
       <p className="mt-4 text-gray-800 text-md font-medium">
@@ -324,9 +303,11 @@ useEffect(() => {
 
     {/* Activity 2 */}
     <div>
-      <img
+      <Image
         src="/images/Acitivity02.png" 
         alt="Career guidance camps"
+        width={1200}
+        height={400}
         className="rounded-lg w-full h-64 object-cover"
       />
       <p className="mt-4 text-gray-800 text-md font-medium">
@@ -336,9 +317,11 @@ useEffect(() => {
 
     {/* Activity 3 */}
     <div>
-      <img
-        src="/images/Acitivity03.png" // Replace with your actual image path
+      <Image
+        src="/images/Acitivity03.png"
         alt="Food distribution"
+        width={1200}
+        height={400}
         className="rounded-lg w-full h-64 object-cover"
       />
       <p className="mt-4 text-gray-800 text-md font-medium">
@@ -349,7 +332,7 @@ useEffect(() => {
 
   {/* Closing paragraph */}
   <p className="mt-12 text-lg font-semibold text-gray-800 leading-relaxed">
-    As a reliable non-profit organisation for the underprivileged, <span className="font-bold">Siddiqui Welfare Society’s Global Foundation</span> provides with unwavering support so that everyone has a chance to succeed.
+    As a reliable non-profit organisation for the underprivileged, <span className="font-bold">Siddiqui Welfare Society&rsquo;s Global Foundation</span> provides unwavering support so that everyone has a chance to succeed.
   </p>
 </div>
 

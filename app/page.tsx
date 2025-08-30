@@ -1,15 +1,19 @@
 'use client'
 
-import Image from "next/image";
-import React, { JSX, useEffect, useRef, useState } from 'react';
+import NextImage from "next/image";
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaHeart, FaUserGraduate, FaHandHoldingMedical, FaUtensils, FaUsers, FaTooth, FaHeartbeat } from 'react-icons/fa';
+import { FaHeart, FaUserGraduate, FaHandHoldingMedical, FaUtensils, FaTooth, FaHeartbeat } from 'react-icons/fa';
 import { stories } from "./lib/stories";
 import Link from "next/link";
+import Image from 'next/image';
 
-gsap.registerPlugin(ScrollTrigger);
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const slides = [
   {
@@ -30,7 +34,7 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const mainRef = useRef(null);
 
-  const latestStories = [...stories].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4);
+
 
   // Hero sliding text
   useEffect(() => {
@@ -52,8 +56,8 @@ export default function Home() {
         .from(".hero-btn", { opacity: 0, y: 20, scale: 0.9, duration: 0.6, ease: "back.out(1.7)" }, 1.1);
 
       // Fade-in sections
-      const sections = gsap.utils.toArray('.fade-in-section');
-      sections.forEach((section: any) => {
+      const sections = gsap.utils.toArray<HTMLElement>('.fade-in-section');
+      sections.forEach((section) => {
         gsap.from(section, {
           opacity: 0,
           y: 50,
@@ -68,9 +72,13 @@ export default function Home() {
       });
 
       // Counters
-      const counters = gsap.utils.toArray('.counter');
-      counters.forEach((counter: any) => {
-        const target = parseInt(counter.dataset.target, 10);
+      const counters = gsap.utils.toArray<HTMLElement>('.counter');
+      counters.forEach((counter) => {
+        // Read target from data-target; default to "0" if missing and guard against NaN
+        const targetAttr = counter.dataset.target ?? "0";
+        const parsed = parseInt(targetAttr, 10);
+        const target = Number.isNaN(parsed) ? 0 : parsed;
+
         const counterObj = { val: 0 };
         gsap.to(counterObj, {
           val: target,
@@ -91,20 +99,27 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  // Key Areas icons mapping
-  const areaIcons: Record<string, JSX.Element> = {
-    Education: <FaUserGraduate />,
-    Medical: <FaHandHoldingMedical />,
-    Clinic: <FaHeart />,
-    Dental: <FaTooth />,
-    ECG: <FaHeartbeat />,
-    "Food & Meals": <FaUtensils />,
-  };
+  const keyAreas = [
+    { label: "Education", icon: <FaUserGraduate />, href: "/topics/educational" },
+    { label: "Medical", icon: <FaHandHoldingMedical />, href: "/topics/medical" },
+    { label: "Clinic", icon: <FaHeart />, href: "/topics/clinic" },
+    { label: "Dental", icon: <FaTooth />, href: "/topics/dental" },
+    { label: "ECG", icon: <FaHeartbeat />, href: "/topics/ecg" },
+    { label: "Food & Meals", icon: <FaUtensils />, href: "/topics/food-meals" },
+  ];
 
   const impactStats = [
     { target: 10000, label: "People Helped" },
     { target: 250, label: "Medical Camps" },
     { target: 5000, label: "Students Educated" },
+  ];
+
+  const categoryFilters = [
+    { href: "/stories/top-stories", label: "Top Stories" },
+    { href: "/stories/latest-stories", label: "Latest Stories" },
+    { href: "/stories/activism", label: "Activism" },
+    { href: "/stories/community", label: "Community" },
+    { href: "/stories/culture", label: "Culture" },
   ];
 
   return (
@@ -115,7 +130,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
         <AnimatePresence>
           <motion.div
-            key={index}
+            key={`bg-${index}`}
             className="hero-bg absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${slides[index].bg}')` }}
             initial={{ opacity: 0, scale: 1.1 }}
@@ -127,7 +142,7 @@ export default function Home() {
         <div className="relative z-20 px-4">
           <AnimatePresence mode="wait">
             <motion.h1
-              key={index}
+              key={`h1-${index}`}
               className="hero-h1 text-5xl md:text-5xl lg:text-6xl font-bold leading-tight"
               initial={{ opacity: 0, y: 30, rotateY: -30 }}
               animate={{ opacity: 1, y: 0, rotateY: 0 }}
@@ -138,26 +153,20 @@ export default function Home() {
               {slides[index].text}
             </motion.h1>
           </AnimatePresence>
-         
         </div>
       </section>
 
       {/* CATEGORY FILTERS */}
 <section className="py-12 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div className="flex flex-wrap justify-center gap-15 text-bold   ">
-      {[
-        { href: "/stories/top-stories", label: "Top Stories" },
-        { href: "/stories/latest-stories", label: "Latest Stories" },
-        { href: "/stories/activism", label: "Activism" },
-        { href: "/stories/community", label: "Community" },
-        { href: "/stories/culture", label: "Culture" }
-      ].map((item) => (
+    <div className="flex flex-wrap justify-center gap-8">
+      {categoryFilters.map((item) => (
         <Link
           key={item.href}
           href={item.href}
-          className="bg-white text-red-600 px-6 py-2 rounded-full font-medium border border-red-600
-                     hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out"
+          className="bg-white text-red-600 px-6 py-2 rounded-full font-semibold border-2 border-red-600
+                     transform transition-all duration-300 ease-in-out
+                     hover:bg-red-600 hover:text-white hover:-translate-y-1 hover:shadow-lg"
         >
           {item.label}
         </Link>
@@ -167,64 +176,74 @@ export default function Home() {
 </section>
 
 
-<section className="py-12 bg-white fade-in-section">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Top Stories by Category</h2>
+      {/* TOP STORIES BY CATEGORY */}
+      <section className="py-12 bg-white fade-in-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Top Stories by Category</h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {[
-        "Education",
-        "Medical",
-        "Community",
-        "Culture",
-        "Activism",
-        "Top Stories", // This will pick a top story from all top stories
-      ].map((categoryName) => {
-        let storyToShow = null;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              "Education",
+              "Medical",
+              "Community",
+              "Culture",
+              "Activism",
+              "Top Stories", // This will pick a top story from all top stories
+            ].map((categoryName, idx) => {
+              let storyToShow = null;
 
-        if (categoryName === "Top Stories") {
-          storyToShow = stories.find((story) => story.topStory);
-        } else {
-          storyToShow = stories.find(
-            (story) => story.category === categoryName && story.topStory
-          );
+              if (categoryName === "Top Stories") {
+                storyToShow = stories.find((story) => story.topStory);
+              } else {
+                storyToShow = stories.find(
+                  (story) => story.category === categoryName && story.topStory
+                );
 
-          if (!storyToShow) {
-            // Fallback: any story from that category
-            storyToShow = stories.find((story) => story.category === categoryName);
-          }
-        }
+                if (!storyToShow) {
+                  // Fallback: any story from that category
+                  storyToShow = stories.find((story) => story.category === categoryName);
+                }
+              }
 
-        if (!storyToShow) return null;
+              if (!storyToShow) return null;
 
-        return (
-          <div
-            key={categoryName}
-            className="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]"
-          >
-            <div className="relative w-full h-56 overflow-hidden">
-              <Image
-                src={storyToShow.image}
-                alt={storyToShow.title}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">{storyToShow.title}</h3>
-              <p className="text-gray-600 text-base mb-4 line-clamp-3">{storyToShow.description}</p>
-              {/* Optional Link */}
-              {/* <Link href={`/stories/${storyToShow.id}`} className="text-red-600 hover:underline font-medium">
-                Read More
-              </Link> */}
-            </div>
+              return (
+                <Link
+                  href={`/stories/${encodeURIComponent(categoryName.replace(/\s+/g, '-').toLowerCase())}`}
+                  key={`cat-${idx}-${storyToShow.id}`}
+                  className="group block focus:outline-none h-full"
+                >
+                  <div className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] h-full flex flex-col">
+                    <div className="relative w-full aspect-video">
+                      <NextImage
+                        src={storyToShow.image}
+                        alt={storyToShow.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <span className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        {storyToShow.category}
+                      </span>
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                        {storyToShow.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed line-clamp-3 flex-grow">
+                        {storyToShow.description}
+                      </p>
+                      <p className="text-sm text-gray-500 mt-auto pt-4">
+                        {new Date(storyToShow.date).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
-        );
-      })}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* KEY AREAS OF FOCUS */}
       <section className="py-20 bg-gray-50 fade-in-section">
@@ -234,13 +253,17 @@ export default function Home() {
             We are dedicated to uplifting communities through targeted programs in critical areas.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {Object.keys(areaIcons).map(area => (
-              <div key={area} className="flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-lg hover:-translate-y-2">
+            {keyAreas.map(area => (
+              <Link
+                href={area.href}
+                key={area.label}
+                className="flex flex-col items-center p-4 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-lg hover:-translate-y-2"
+              >
                 <div className="bg-red-100 text-red-600 rounded-full p-4 mb-3 text-3xl">
-                  {areaIcons[area]}
+                  {area.icon}
                 </div>
-                <h3 className="font-semibold text-lg">{area}</h3>
-              </div>
+                <h3 className="font-semibold text-lg">{area.label}</h3>
+              </Link>
             ))}
           </div>
         </div>

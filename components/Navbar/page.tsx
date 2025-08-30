@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import Link from 'next/link'
 import { FiChevronDown } from 'react-icons/fi'
 import { menuItems } from '../menu-items'
@@ -94,11 +94,11 @@ function Navbar() {
                 <div className="flex items-center justify-between h-18">
                     {/* Logo */}
                     <div ref={logoRef} className="flex-shrink-0">
-                        <Image
+                        <NextImage
                             src="/images/logo.png" 
                             alt="Brand Logo"
-                            width={160}
-                            height={52}
+                            width={220}
+                            height={72}
                             className="object-contain"
                         />
                     </div>

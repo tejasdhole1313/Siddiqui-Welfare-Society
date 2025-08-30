@@ -4,9 +4,11 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { menuItems } from './menu-items'
-import Image from 'next/image'
+import NextImage from 'next/image'
 
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger)
+}
 
 function Footer() {
     const footerRef = useRef<HTMLElement>(null)
@@ -35,7 +37,7 @@ function Footer() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="footer-col">
-                        <Image
+                        <NextImage
                             src="/images/footer.png"
                             alt="Brand Logo"
                             width={100}

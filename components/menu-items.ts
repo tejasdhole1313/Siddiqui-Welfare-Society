@@ -3,16 +3,15 @@ export const menuItems = [
     { title: 'About Us', path: '/about-us' },
     {
         title: 'Topics',
-        path: '/topics',
+        path: '',
         subMenu: [
             { title: 'Educational', path: '/topics/educational' },
             { title: 'Medical', path: '/topics/medical' },
             { title: 'Clinic', path: '/topics/clinic' },
-            { title: 'Dental', path: '/topics/dental' },
-            { title: 'Surgical', path: '/topics/surgical' },
-            { title: 'Others', path: '/topics/others' },
+            { title: 'Dental', path: '/topics/dental' },       
             { title: 'ECG', path: '/topics/ecg' },
             { title: 'Food & Meals', path: '/topics/food-meals' },
+             
         ]
     },
     { title: 'Donation', path: '/donation' },
