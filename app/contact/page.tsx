@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+
 // Contact page with scroll-triggered form reveal and animated headings
 const Contact = () => {
    const heroRef = useRef<HTMLDivElement>(null)
@@ -144,6 +145,9 @@ useEffect(() => {
                 Maharashtra 431001
               </address>
               <p className="animated-subtitle text-gray-600 text-left w-full">Call +91 99605 89100</p>
+              {/* <div className='flex justify-center mt-8 '>
+                <Image className='w-full' src="/images/contact.png" alt="" width={500} height={100} />
+              </div> */}
             </div>
 
             {/* Complaints or Queries Form - Right */}

@@ -3,6 +3,7 @@ export interface Story {
   category: string;
   title: string;
   description: string;
+  desc?: string;
   image: string;
   date: string;
   topStory: boolean;
@@ -23,6 +24,7 @@ export const stories: Story[] = [
     category: "Medical",
     title: "Global Foundation Steps Up for Blood Shortages",
     description: "India experiences alarming scarcity of this life-saving drop, throwing recurring challenges for the healthcare sector.",
+    desc: "Blood shortages have become a pressing concern across India, affecting millions of lives.",
     image: "/images/top02.png",
     date: "2024-09-23",
     topStory: true,

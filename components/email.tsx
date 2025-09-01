@@ -1,42 +1,113 @@
-import Link from "next/link";
+'use client'
 
-const EmailSection = () => {
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import Link from 'next/link'
+import { FiMail, FiArrowRight, FiCheckCircle } from 'react-icons/fi'
+
+const EmailSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const cardRef = useRef<HTMLDivElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+  const formRef = useRef<HTMLFormElement | null>(null)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+
+  useEffect(() => {
+    const card = cardRef.current
+    const title = titleRef.current
+    const subtitle = subtitleRef.current
+    const form = formRef.current
+    const btn = buttonRef.current
+
+    // Ensure all elements are available before creating animations
+    if (card && title && subtitle && form && btn) {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+      tl.fromTo(card, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+        .from(title, { y: 16, opacity: 0, duration: 0.45 }, '-=0.2')
+        .from(subtitle, { y: 12, opacity: 0, duration: 0.4 }, '-=0.25')
+        .from(form, { y: 12, opacity: 0, duration: 0.45 }, '-=0.25')
+
+      const onEnter = () => gsap.to(btn, { y: -2, scale: 1.02, duration: 0.18, ease: 'power2.out' })
+      const onLeave = () => gsap.to(btn, { y: 0, scale: 1, duration: 0.18, ease: 'power2.inOut' })
+      btn.addEventListener('mouseenter', onEnter)
+      btn.addEventListener('mouseleave', onLeave)
+
+      return () => {
+        btn.removeEventListener('mouseenter', onEnter)
+        btn.removeEventListener('mouseleave', onLeave)
+        // It's good practice to kill the timeline on unmount
+        tl.kill()
+      }
+    }
+  }, [])
+
   return (
-    <section className="bg-red-700">
-      <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold">Reframe your inbox</h2>
-        <p className="text-lg mt-4 mb-8">
-          Subscribe to our newsletter and never miss a story.
-        </p>
-        <form className="flex flex-col items-center gap-4 max-w-lg mx-auto">
-          <div className="w-full ">
-            <label htmlFor="email" className="block text-left text-white mb-2">
-              Email address
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              className="w-full px-5 py-3 rounded-md bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
-              required
-            />
+    <section ref={sectionRef} className="relative overflow-hidden bg-red-700 py-20">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div
+          ref={cardRef}
+          className="rounded-2xl p-6 sm:p-10 text-white"
+        >
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 ref={titleRef} className="email-title text-3xl md:text-4xl font-extrabold tracking-tight">
+              Reframe your inbox
+            </h2>
+            <p ref={subtitleRef} className="email-subtitle mt-3 text-base md:text-lg text-white/90">
+              Subscribe for stories that matter. Thoughtfully curated, delivered occasionally.
+            </p>
           </div>
-          <button
-            type="submit"
-            className="border border-black text-black px-8 py-3 rounded-md font-semibold transition-all duration-300 hover:bg-black hover:text-white"
+
+          {/* Form */}
+          <form
+            ref={formRef}
+            className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center"
+            onSubmit={(e) => e.preventDefault()}
+            aria-label="Newsletter subscription form"
           >
-            SUBSCRIBE
-          </button>
-        </form>
-        <p className="text-sm mt-6">
-          We care about your data in our{" "}
-          <Link href="/privacy-policy" className="underline">
-            privacy policy.
-          </Link>
-        </p>
+            <div className="relative w-full max-w-lg">
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <FiMail className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={20} />
+              <input
+                id="email"
+                type="email"
+                autoComplete="email"
+                required
+                placeholder="Enter your email"
+                className="w-full rounded-xl border-0 bg-white pl-11 pr-4 py-3 text-gray-900 shadow-sm ring-1 ring-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <button
+              ref={buttonRef}
+              type="button"
+              className="group inline-flex items-center justify-center rounded-xl bg-black/90 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/40"
+            >
+              Subscribe
+              <FiArrowRight className="ml-2 transition-transform duration-200 group-hover:translate-x-0.5" size={18} />
+            </button>
+          </form>
+
+          {/* Value bullets */}
+          <div className="mt-6 flex flex-col items-center gap-3 text-sm text-white/90 sm:flex-row sm:justify-center">
+            <div className="inline-flex items-center gap-2"><FiCheckCircle className="text-emerald-300" /> No spam</div>
+            <div className="hidden sm:block">•</div>
+            <div className="inline-flex items-center gap-2"><FiCheckCircle className="text-emerald-300" /> Unsubscribe anytime</div>
+            <div className="hidden sm:block">•</div>
+            <div className="inline-flex items-center gap-2">
+              We care about your data in our&nbsp;
+              <Link href="/privacy-policy" className="underline underline-offset-4">
+                privacy policy
+              </Link>
+              .
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default EmailSection;
+export default EmailSection

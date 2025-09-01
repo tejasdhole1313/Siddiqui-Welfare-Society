@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Link from 'next/link'
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { menuItems } from './menu-items'
 import NextImage from 'next/image'
@@ -11,6 +12,7 @@ if (typeof window !== 'undefined') {
 }
 
 function Footer() {
+    const currentYear = new Date().getFullYear()
     const footerRef = useRef<HTMLElement>(null)
 
     useEffect(() => {
@@ -43,6 +45,7 @@ function Footer() {
                             width={100}
                             height={20}
                             className="object-contain mb-4"
+                            style={{ height: 'auto' }}
                         />
                         <p className="text-gray-400">Good News empowers the generation of tomorrow for a brighter future and hope for every individual.</p>
                     </div>
@@ -50,8 +53,8 @@ function Footer() {
                         <h3 className="text-lg font-bold mb-4">Quick Links</h3>
                         <ul>
                             {menuItems.map((item, index) => (
-                                <li key={index} className="mb-2">
-                                    <a href={item.path} className="text-gray-400 hover:text-white transition-colors duration-300">{item.title}</a>
+                                item.path && <li key={index} className="mb-2">
+                                    <Link href={item.path} className="text-gray-400 hover:text-white transition-colors duration-300">{item.title}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -65,16 +68,18 @@ function Footer() {
                     <div className="footer-col">
                         <h3 className="text-lg font-bold mb-4">Follow Us</h3>
                         <div className="flex space-x-4">
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaFacebook size={24} /></a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaTwitter size={24} /></a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaInstagram size={24} /></a>
-                            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300"><FaLinkedin size={24} /></a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-400 hover:text-white transition-colors duration-300"><FaFacebook size={24} /></a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-gray-400 hover:text-white transition-colors duration-300"><FaTwitter size={24} /></a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-white transition-colors duration-300"><FaInstagram size={24} /></a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-400 hover:text-white transition-colors duration-300"><FaLinkedin size={24} /></a>
                         </div>
                     </div>
                 </div>
                 <div className="flex mt-8 border-t border-gray-700 pt-8  text-gray-400 justify-between">
-                    <p>&copy; 2025 Siddiqui Welfare Society. All rights reserved.</p>
-                    <p className="">Moksha Solution</p>
+                    <p>&copy; {currentYear} Siddiqui Welfare Society. All rights reserved.</p>
+                    <a href="https://mokshasolution.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">
+                        Moksha Solution
+                    </a>
                 </div>
 
             </div>

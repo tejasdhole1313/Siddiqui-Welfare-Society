@@ -8,7 +8,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaHeart, FaUserGraduate, FaHandHoldingMedical, FaUtensils, FaTooth, FaHeartbeat } from 'react-icons/fa';
 import { stories } from "./lib/stories";
 import Link from "next/link";
-import Image from 'next/image';
 
 
 if (typeof window !== "undefined") {
@@ -33,6 +32,7 @@ const slides = [
 export default function Home() {
   const [index, setIndex] = useState(0);
   const mainRef = useRef(null);
+  const heroH1Ref = useRef<HTMLHeadingElement>(null);
 
 
 
@@ -47,51 +47,59 @@ export default function Home() {
   // GSAP animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero background scale
-      gsap.fromTo(".hero-bg", { scale: 1 }, { scale: 1.1, duration: 10, ease: "none" });
+      // Run after paint to ensure nodes exist
+      requestAnimationFrame(() => {
+        // Hero background scale
+        const heroBgEls = gsap.utils.toArray<HTMLElement>('.hero-bg');
+        if (heroBgEls.length) {
+          gsap.fromTo(heroBgEls, { scale: 1 }, { scale: 1.1, duration: 10, ease: "none" });
+        }
 
-      // Hero content animation
-      const tl = gsap.timeline();
-      tl.from(".hero-h1", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, 0.5)
-        .from(".hero-btn", { opacity: 0, y: 20, scale: 0.9, duration: 0.6, ease: "back.out(1.7)" }, 1.1);
+        // Hero content animation
+        if (heroH1Ref.current) {
+          gsap.from(heroH1Ref.current, {
+            opacity: 0, y: 30, duration: 0.8, ease: "power3.out", delay: 0.5
+          });
+        }
 
-      // Fade-in sections
-      const sections = gsap.utils.toArray<HTMLElement>('.fade-in-section');
-      sections.forEach((section) => {
-        gsap.from(section, {
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          }
+        // Fade-in sections
+        const sections = gsap.utils.toArray<HTMLElement>('.fade-in-section');
+        sections.forEach((section) => {
+          gsap.from(section, {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            }
+          });
         });
-      });
 
-      // Counters
-      const counters = gsap.utils.toArray<HTMLElement>('.counter');
-      counters.forEach((counter) => {
-        // Read target from data-target; default to "0" if missing and guard against NaN
-        const targetAttr = counter.dataset.target ?? "0";
-        const parsed = parseInt(targetAttr, 10);
-        const target = Number.isNaN(parsed) ? 0 : parsed;
+        // Counters
+        const counters = gsap.utils.toArray<HTMLElement>('.counter');
+        counters.forEach((counter) => {
+          // Read target from data-target; default to "0" if missing and guard against NaN
+          const targetAttr = counter.dataset.target ?? "0";
+          const parsed = parseInt(targetAttr, 10);
+          const target = Number.isNaN(parsed) ? 0 : parsed;
 
-        const counterObj = { val: 0 };
-        gsap.to(counterObj, {
-          val: target,
-          duration: 2,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: counter,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          },
-          onUpdate: () => {
-            counter.innerHTML = Math.ceil(counterObj.val).toLocaleString() + "+";
-          }
+          const counterObj = { val: 0 };
+          gsap.to(counterObj, {
+            val: target,
+            duration: 2,
+            ease: "power1.inOut",
+            scrollTrigger: {
+              trigger: counter,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            },
+            onUpdate: () => {
+              counter.innerHTML = Math.ceil(counterObj.val).toLocaleString() + "+";
+            }
+          });
         });
       });
 
@@ -132,7 +140,7 @@ export default function Home() {
           <motion.div
             key={`bg-${index}`}
             className="hero-bg absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${slides[index].bg}')` }}
+            style={{ backgroundImage: `url(${slides[index].bg})` }}
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.1 }}
@@ -143,6 +151,7 @@ export default function Home() {
           <AnimatePresence mode="wait">
             <motion.h1
               key={`h1-${index}`}
+              ref={heroH1Ref}
               className="hero-h1 text-5xl md:text-5xl lg:text-6xl font-bold leading-tight"
               initial={{ opacity: 0, y: 30, rotateY: -30 }}
               animate={{ opacity: 1, y: 0, rotateY: 0 }}

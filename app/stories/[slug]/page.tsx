@@ -2,8 +2,8 @@ import NextImage from "next/image";
 import { stories } from "../../lib/stories";
 import Link from "next/link";
 
-export default function StoryCategoryPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function StoryCategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
 
 const getFilteredStories = () => {
   const decodedSlug = decodeURIComponent(slug);
@@ -64,7 +64,7 @@ const getFilteredStories = () => {
             {filteredStories.length > 0 ? (
               filteredStories.map((story) => (
                 <Link
-                  href={`/stories/${encodeURIComponent(story.category.replace(/\s+/g, '-').toLowerCase())}`}
+                  href={`/stories/${encodeURIComponent(story.category.replace(/\s+/g, '-').toLowerCase())}/${story.id}`}
                   key={story.id}
                   className="block group focus:outline-none"
                 >
@@ -91,9 +91,20 @@ const getFilteredStories = () => {
                       <p className="text-gray-600 leading-relaxed line-clamp-3 flex-grow">
                         {story.description}
                       </p>
-                      <p className="text-sm text-gray-500 mt-auto pt-4">
-                        {new Date(story.date).toLocaleDateString()}
-                      </p>
+                     
+                        <p className="text-sm text-gray-500 mt-2">
+                          {new Date(story.date).toLocaleDateString()}
+                        </p>
+                         <div className="mt-auto pt-4">
+                        <div className="flex items-center text-red-600 font-semibold  justify-end text-right cursor-pointer
+                      u">
+                          <span className="mr-1">Read more</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1">
+                            <path fillRule="evenodd" d="M12.97 4.97a.75.75 0 011.06 0l6 6a.75.75 0 010 1.06l-6 6a.75.75 0 11-1.06-1.06L17.94 12l-4.97-4.97a.75.75 0 010-1.06z" clipRule="evenodd" />
+                            <path fillRule="evenodd" d="M4.5 12a.75.75 0 01.75-.75h14.69a.75.75 0 010 1.5H5.25A.75.75 0 014.5 12z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </Link>

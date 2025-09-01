@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { FiHeart, FiUsers, FiBook, FiActivity, FiAward, FiGlobe } from 'react-icons/fi'
+import { FiBook, FiActivity, FiAward, FiGlobe } from 'react-icons/fi'
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger)
 }
@@ -179,7 +179,7 @@ useEffect(() => {
                                 enables us to connect with other&apos;s experiences for a shared humanity.
                             </p>
                             <p>
-                                Siddiqui Welfare Society's Global Foundation bears this ideology as the driving force behind their endeavours. 
+                                Siddiqui Welfare Society&apos;s Global Foundation bears this ideology as the driving force behind their endeavours. 
                                 Based in the bustling city of Aurangabad, the renowned non-profit organisation for the 
                                 underprivileged has been striving to uplift the poor by providing financial assistance for 
                                 education and medical causes.

@@ -21,9 +21,6 @@ if (typeof window !== "undefined") {
 }
 
 export default function Donation() {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(1000)
-  const [customAmount, setCustomAmount] = useState("")
-
 
   const heroRef = useRef<HTMLDivElement>(null)
   const bannerRef = useRef<HTMLDivElement>(null)
@@ -304,7 +301,7 @@ export default function Donation() {
                   desc:
                     "Stay updated on ongoing campaigns and special donation drives on our website and social media."
                 }
-              ].map((item, i) => (
+              ].map((item) => (
                 <motion.li
                   key={item.title}
                   variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
@@ -338,7 +335,7 @@ export default function Donation() {
             </div>
 
             <p className="mt-2 text-gray-700">
-              We're here to help with any questions about your donation.
+              We&apos;re here to help with any questions about your donation.
             </p>
             <p className="mt-2 text-gray-900 font-semibold">
               Phone: <a className="text-red-600 hover:underline" href="tel:+919960589100">+91 99605 89100</a>

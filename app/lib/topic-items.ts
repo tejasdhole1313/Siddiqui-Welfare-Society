@@ -5,6 +5,8 @@ export interface TopicItem {
   // optional category label for UI grouping
   category?: string
   description: string
+  // optional long-form text (not currently used by UI)
+  desc?: string
   image: string
   date: string
   // slug this item belongs to, e.g., "educational"
@@ -16,24 +18,43 @@ export interface TopicItem {
 // Dummy data grouped by topic slug
 export const topicItemsBySlug: Record<string, TopicItem[]> = {
   educational: [
-    {
-      id: 101,
-      category: "COMMUNITY",
-      slug: 'educational',
-      title: 'Providing Hope and Health: The Impact of Free Dialysis Program by Siddiqui Welfare Society',
-      description: 'Siddiqui Welfare Society has been instrumental in addressing the healthcare needs of underprivileged communities, particularly individuals suffering from kidney diseases. Through its commendable initiative of providing free dialysis, the organization has significantly enhanced the accessibility of life-saving treatment for those who are unable to afford it.',
-      image: '/images/top12.png',
-      date: '10/6/2024',
-    },
-    {
-      id: 102,
-      category: "EDUCATIONAL",
-      slug: 'educational',
-      title: 'Siddiqui Welfare Society Empowers Underprivileged Communities Through Computer Training and Educational Programs',
-      description: 'The Siddiqui Welfare Society (SWS) has been making significant strides in empowering underprivileged communities through a range of educational and skill development programs.',
-      image: '/images/top01.png',
-      date: '10/3/2024',
-    },
+   {
+  id: 101,
+  category: "COMMUNITY",
+  slug: 'educational',
+  title: 'Providing Hope and Health: The Impact of Free Dialysis Program by Siddiqui Welfare Society',
+  description: 'Siddiqui Welfare Society has been instrumental in addressing the healthcare needs of underprivileged communities, particularly individuals suffering from kidney diseases. Through its commendable initiative of providing free dialysis, the organization has significantly enhanced the accessibility of life-saving treatment for those who are unable to afford it.',
+  desc: `Introduction: Siddiqui Welfare Society has been instrumental in addressing the healthcare needs of underprivileged communities, particularly individuals suffering from kidney diseases. Through its commendable initiative of providing free dialysis, the organization has significantly enhanced the accessibility of life-saving treatment for those who are unable to afford it. One of the pivotal aspects of this program is the installation of dialysis machines in various hospitals, making this essential medical service available at no cost to those in need.
+
+Addressing Healthcare Disparities: In many parts of the world, access to dialysis treatment remains a challenge for economically disadvantaged individuals. Siddiqui Welfare Society has taken a proactive approach to bridge this gap by establishing a network of free dialysis centers. This initiative has not only saved lives but has also alleviated the financial burden on the underprivileged, offering them a chance for a healthier and more productive life.
+
+Quality Care for All: The provision of free dialysis services demonstrates the organization’s commitment to ensuring that individuals from all walks of life receive high-quality medical care, irrespective of their financial standing. By installing dialysis machines in various hospitals, the NGO has extended the reach of this critical treatment, thereby positively impacting the lives of countless individuals and their families.
+
+Empowering Communities: The impact of Siddiqui Welfare Society's free dialysis program extends beyond the realm of healthcare. By enabling equitable access to this vital service, the organization has empowered underprivileged communities, offering them hope and a renewed sense of well-being. The program not only saves lives but also fosters a sense of solidarity and compassion within society.
+
+Promoting Sustainable Healthcare: The installation of dialysis machines in hospitals represents a sustainable model of healthcare provision. By integrating this infrastructure into existing medical facilities, Siddiqui Welfare Society has laid the foundation for a continued, long-term impact, ensuring that the benefits of free dialysis are perpetuated for the benefit of future generations.
+
+Conclusion: Siddiqui Welfare Society’s free dialysis program stands as a beacon of hope for those grappling with the burden of kidney disease, offering them a lifeline through its altruistic endeavors. The installation of dialysis machines in various hospitals has not only transformed the healthcare landscape for the underprivileged but has also exemplified the profound impact that dedicated initiatives can have on societal well-being. As the organization continues its noble mission, it paves the way for a future where equitable healthcare is a reality for all.
+
+By highlighting the extraordinary efforts of Siddiqui Welfare Society, this article aims to raise awareness of the remarkable work being done to make free dialysis accessible to those in need, ultimately inspiring further support and collaboration for this essential cause.`,
+  image: '/images/top12.png',
+  date: '10/6/2024',
+}
+,
+  {
+  id: 102,
+  category: "EDUCATIONAL",
+  slug: 'educational',
+  title: 'Siddiqui Welfare Society Empowers Underprivileged Communities Through Computer Training and Educational Programs',
+  description: 'The Siddiqui Welfare Society (SWS) has been making significant strides in empowering underprivileged communities through a range of educational and skill development programs.',
+  desc: `The Siddiqui Welfare Society (SWS) has been making significant strides in empowering underprivileged communities through a range of educational and skill development programs. With a strong focus on academic education, computer technology-related training, and self-employment initiatives, SWS has been instrumental in equipping individuals with the tools they need to break the cycle of poverty and achieve economic independence.
+
+One of the flagship programs offered by SWS is the provision of basic computer training in areas such as desktop publishing (DTP), Microsoft Office, and Tally, among others. Recognizing the increasing importance of computer literacy in today's digital age, SWS has been proactive in ensuring that individuals from marginalized backgrounds are not left behind. By imparting these essential skills, SWS is enabling participants to enhance their employability and access a wider range of job opportunities in various industries.
+
+The computer training courses provided by SWS go beyond just technical skills; they also aim to instill confidence and empower individuals to navigate the digital landscape with ease. Participants are given the opportunity to develop proficiency in fundamental software applications, thus enabling them to become more competitive in the job market and better equipped to pursue higher education or vocational training.`,
+  image: '/images/top01.png',
+  date: '10/3/2024',
+},
     {
       id: 103,
       category: "COMMUNITY",
