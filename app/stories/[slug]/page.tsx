@@ -74,7 +74,7 @@ const getFilteredStories = () => {
                       {/* Next.js Image */}
                     <NextImage
                         src={story.image}
-                        alt={story.title}
+                        alt={story.title && story.title.trim().length > 0 ? story.title : `${story.category} Story #${story.id}`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -86,7 +86,7 @@ const getFilteredStories = () => {
 
                     <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                        {story.title}
+                        {story.title && story.title.trim().length > 0 ? story.title : `${story.category} Story #${story.id}`}
                       </h3>
                       <p className="text-gray-600 leading-relaxed line-clamp-3 flex-grow">
                         {story.description}

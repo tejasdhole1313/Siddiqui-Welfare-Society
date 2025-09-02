@@ -26,7 +26,7 @@ export default async function TopicDetailPage({ params }: { params: Promise<{ sl
       <div className="relative text-white py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/about-bg.jpg')" }}>
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-3xl font-bold max-w-4xl">{item.title}</h1>
+          {/* <h1 className="text-xl sm:text-3xl font-bold max-w-xl">{item.title}</h1> */}
           {/* <p className="mt-3 text-white/90">{new Date(item.date).toLocaleDateString()}</p>
           <div className="mt-4">
             <Link href={`/topics/${slug}`} className="inline-flex items-center text-white/90 hover:text-white transition-colors">

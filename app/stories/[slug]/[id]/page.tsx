@@ -3,27 +3,29 @@ import { notFound } from 'next/navigation';
 import NextImage from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next';
 
-type Props = {
-  params: { id: string; slug: string };
+type RouteParams = {
+  id: string;
+  slug: string;
 };
 
 // Helper to find the story, reusable for metadata and page component
-function getStory({ params }: Props): Story | undefined {
-  const storyId = parseInt(params.id, 10);
+function getStory({ slug, id }: RouteParams): Story | undefined {
+  const storyId = parseInt(id, 10);
   if (isNaN(storyId)) {
     return undefined;
   }
   return stories.find(
-    (s) => s.id === storyId && s.category.replace(/\s+/g, '-').toLowerCase() === params.slug
+    (s) => s.id === storyId && s.category.replace(/\s+/g, '-').toLowerCase() === slug
   );
 }
 
 // Generate metadata for the page
 export async function generateMetadata(
-  { params }: Props,
+  { params }: { params: Promise<RouteParams> },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const story = getStory({ params });
+  const { slug, id } = await params;
+  const story = getStory({ slug, id });
 
   if (!story) {
     return {
@@ -34,20 +36,31 @@ export async function generateMetadata(
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
+  const displayTitle =
+    story.title && story.title.trim().length > 0
+      ? story.title
+      : `${story.category} Story #${story.id}`;
+
+  const displayDescription =
+    story.description && story.description.trim().length > 0
+      ? story.description
+      : 'Read this story from Siddiqui Welfare Society.';
+
   return {
-    title: story.title,
-description: story.description,
+    title: displayTitle,
+    description: displayDescription,
     openGraph: {
-      title: story.title,
-      description: story.description,
+      title: displayTitle,
+      description: displayDescription,
       images: [story.image, ...previousImages],
     },
   };
 }
 
 // The component is now async to fix the error.
-export default async function StoryDetailPage({ params }: Props) {
-  const story = getStory({ params });
+export default async function StoryDetailPage({ params }: { params: Promise<RouteParams> }) {
+  const { slug, id } = await params;
+  const story = getStory({ slug, id });
 
   if (!story) {
     notFound();
@@ -61,7 +74,7 @@ export default async function StoryDetailPage({ params }: Props) {
             {story.category}
           </p>
           <h1 className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {story.title}
+            {story.title && story.title.trim().length > 0 ? story.title : `${story.category} Story #${story.id}`}
           </h1>
           <p className="mt-4 text-lg text-gray-500">
             {new Date(story.date).toLocaleDateString('en-US', {
@@ -94,7 +107,7 @@ export default async function StoryDetailPage({ params }: Props) {
 }
 
 // Generate static paths for all stories at build time
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<RouteParams[]> {
   return stories.map((story) => ({
     slug: story.category.replace(/\s+/g, '-').toLowerCase(),
     id: story.id.toString(),

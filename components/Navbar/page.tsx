@@ -19,7 +19,8 @@ function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
     const dropdownRef = useRef<HTMLUListElement>(null)
     const pathname = usePathname()
-    const isHeroPage = pathname === '/' || pathname.startsWith('/topics') || pathname.startsWith('/stories')
+    // Treat only home and topics as hero pages; stories should use dark text
+    const isHeroPage = pathname === '/' || pathname.startsWith('/topics')
 
     useEffect(() => {
         // Initial animation on mount

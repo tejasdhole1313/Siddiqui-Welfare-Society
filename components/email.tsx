@@ -2,8 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import Link from 'next/link'
-import { FiMail, FiArrowRight, FiCheckCircle } from 'react-icons/fi'
+import { FiMail, FiArrowRight } from 'react-icons/fi'
 
 const EmailSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -20,7 +19,6 @@ const EmailSection: React.FC = () => {
     const form = formRef.current
     const btn = buttonRef.current
 
-    // Ensure all elements are available before creating animations
     if (card && title && subtitle && form && btn) {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
@@ -37,7 +35,6 @@ const EmailSection: React.FC = () => {
       return () => {
         btn.removeEventListener('mouseenter', onEnter)
         btn.removeEventListener('mouseleave', onLeave)
-        // It's good practice to kill the timeline on unmount
         tl.kill()
       }
     }
@@ -46,10 +43,7 @@ const EmailSection: React.FC = () => {
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-red-700 py-20">
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div
-          ref={cardRef}
-          className="rounded-2xl p-6 sm:p-10 text-white"
-        >
+        <div ref={cardRef} className="rounded-2xl p-6 sm:p-10 text-white">
           <div className="mx-auto max-w-3xl text-center">
             <h2 ref={titleRef} className="email-title text-3xl md:text-4xl font-extrabold tracking-tight">
               Reframe your inbox
@@ -59,7 +53,6 @@ const EmailSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Form */}
           <form
             ref={formRef}
             className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center"
@@ -67,9 +60,7 @@ const EmailSection: React.FC = () => {
             aria-label="Newsletter subscription form"
           >
             <div className="relative w-full max-w-lg">
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
+              <label htmlFor="email" className="sr-only">Email address</label>
               <FiMail className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={20} />
               <input
                 id="email"
@@ -89,21 +80,6 @@ const EmailSection: React.FC = () => {
               <FiArrowRight className="ml-2 transition-transform duration-200 group-hover:translate-x-0.5" size={18} />
             </button>
           </form>
-
-          {/* Value bullets */}
-          <div className="mt-6 flex flex-col items-center gap-3 text-sm text-white/90 sm:flex-row sm:justify-center">
-            <div className="inline-flex items-center gap-2"><FiCheckCircle className="text-emerald-300" /> No spam</div>
-            <div className="hidden sm:block">•</div>
-            <div className="inline-flex items-center gap-2"><FiCheckCircle className="text-emerald-300" /> Unsubscribe anytime</div>
-            <div className="hidden sm:block">•</div>
-            <div className="inline-flex items-center gap-2">
-              We care about your data in our&nbsp;
-              <Link href="/privacy-policy" className="underline underline-offset-4">
-                privacy policy
-              </Link>
-              .
-            </div>
-          </div>
         </div>
       </div>
     </section>
