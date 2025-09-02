@@ -154,7 +154,7 @@ function Navbar() {
                                 height={72}
                                 className="object-contain"
                                 priority
-                                style={{ height: 'auto' }}
+                                style={{ height: 'auto', width: 'auto' }}
                             />
                         </Link>
                     </div>
@@ -178,7 +178,7 @@ function Navbar() {
                                         <span className={`absolute -bottom-1 left-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full ${showUnderline ? 'w-full' : 'w-0'}`}></span>
                                     </Link>
                                     {item.subMenu && (openDropdown === item.title || closingDropdown === item.title) && (
-                                        <ul ref={dropdownRef} className="absolute top-full left-0 mt-5 py-2 w-48 bg-white rounded-md overflow-hidden">
+                                        <ul ref={dropdownRef} className="absolute top-full left-0 mt-1 py-3 w-48 bg-white rounded-md overflow-hidden">
                                             {item.subMenu.map((subItem, subIndex) => (
                                                 <li key={subIndex}>
                                                     <Link href={subItem.path}

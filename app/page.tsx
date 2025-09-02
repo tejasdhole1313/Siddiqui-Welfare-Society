@@ -17,15 +17,15 @@ if (typeof window !== "undefined") {
 const slides = [
   {
     text: "Siddiqui Welfare Society",
-    bg: "/images/bg.jpg"
+    bg: "/images/bg-01.jpg"
   },
   {
     text: "Global Medical & Educational Foundation",
-    bg: "/images/bg01.jpg"
+    bg: "/images/bg-5.jpg"
   },
   {
     text: "Empowering Communities for a Better Tomorrow",
-    bg: "/images/top01.png"
+    bg: "/images/bg-03.jpg"
   }
 ];
 

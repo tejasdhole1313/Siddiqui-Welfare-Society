@@ -45,85 +45,95 @@ useEffect(() => {
 }, []);
 
         // Story section animation
-        gsap.fromTo(storyRef.current?.children || [], 
-            { x: -100, opacity: 0 }, 
-            { 
-                x: 0, 
-                opacity: 1, 
-                duration: 0.8, 
-                stagger: 0.2, 
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: storyRef.current,
-                    start: "top 80%",
-                    end: "bottom 20%",
+        if (storyRef.current) {
+            gsap.fromTo(storyRef.current.children,
+                { x: -100, opacity: 0 },
+                { 
+                    x: 0, 
+                    opacity: 1, 
+                    duration: 0.8, 
+                    stagger: 0.2, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: storyRef.current,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                    }
                 }
-            }
-        )
+            )
+        }
 
         // Image animation
-        gsap.fromTo(imageRef.current, 
-            { x: 100, opacity: 0, scale: 0.8 }, 
-            { 
-                x: 0, 
-                opacity: 1, 
-                scale: 1, 
-                duration: 1, 
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: imageRef.current,
-                    start: "top 80%",
+        if (imageRef.current) {
+            gsap.fromTo(imageRef.current, 
+                { x: 100, opacity: 0, scale: 0.8 }, 
+                { 
+                    x: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 1, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: imageRef.current,
+                        start: "top 80%",
+                    }
                 }
-            }
-        )
+            )
+        }
 
         // Mission cards animation
-        gsap.fromTo(missionRef.current?.children || [], 
-            { y: 100, opacity: 0 }, 
-            { 
-                y: 0, 
-                opacity: 1, 
-                duration: 0.8, 
-                stagger: 0.3, 
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: missionRef.current,
-                    start: "top 80%",
+        if (missionRef.current) {
+            gsap.fromTo(missionRef.current.children, 
+                { y: 100, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 0.8, 
+                    stagger: 0.3, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: missionRef.current,
+                        start: "top 80%",
+                    }
                 }
-            }
-        )
+            )
+        }
 
         // Activities animation
-        gsap.fromTo(activitiesRef.current?.children || [], 
-            { y: 50, opacity: 0 }, 
-            { 
-                y: 0, 
-                opacity: 1, 
-                duration: 0.6, 
-                stagger: 0.1, 
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: activitiesRef.current,
-                    start: "top 80%",
+        if (activitiesRef.current) {
+            gsap.fromTo(activitiesRef.current.children, 
+                { y: 50, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 0.6, 
+                    stagger: 0.1, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: activitiesRef.current,
+                        start: "top 80%",
+                    }
                 }
-            }
-        )
+            )
+        }
 
         // Team animation
-        gsap.fromTo(teamRef.current?.children || [], 
-            { scale: 0.8, opacity: 0 }, 
-            { 
-                scale: 1, 
-                opacity: 1, 
-                duration: 0.6, 
-                stagger: 0.1, 
-                ease: "back.out(1.7)",
-                scrollTrigger: {
-                    trigger: teamRef.current,
-                    start: "top 80%",
+        if (teamRef.current) {
+            gsap.fromTo(teamRef.current.children, 
+                { scale: 0.8, opacity: 0 }, 
+                { 
+                    scale: 1, 
+                    opacity: 1, 
+                    duration: 0.6, 
+                    stagger: 0.1, 
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: teamRef.current,
+                        start: "top 80%",
+                    }
                 }
-            }
-        )
+            )
+        }
 
     
 
