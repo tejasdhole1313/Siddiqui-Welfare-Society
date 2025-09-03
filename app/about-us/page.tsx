@@ -300,7 +300,7 @@ useEffect(() => {
     {/* Activity 1 */}
     <div>
       <Image
-        src="/images/Acitivity01.png" 
+        src="./images/Acitivity01.png" 
         alt="Aiding small businesses"
         width={1200}
         height={400}
@@ -314,7 +314,7 @@ useEffect(() => {
     {/* Activity 2 */}
     <div>
       <Image
-        src="/images/Acitivity02.jpg" 
+        src="./images/Acitivity02.jpg" 
         alt="Career guidance camps"
         width={1200}
         height={400}
@@ -328,7 +328,7 @@ useEffect(() => {
     {/* Activity 3 */}
     <div>
       <Image
-        src="/images/Acitivity03.jpg"
+        src="./images/Acitivity03.jpg"
         alt="Food distribution"
         width={1200}
         height={400}
