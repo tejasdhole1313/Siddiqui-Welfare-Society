@@ -3,48 +3,55 @@ import { notFound } from 'next/navigation';
 import NextImage from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next';
 
+// Define params for this route
 type Params = {
   id: string;
   slug: string;
 };
 
+// Helper function to get a story
 function getStory({ slug, id }: Params): Story | undefined {
   const storyId = parseInt(id, 10);
   if (isNaN(storyId)) return undefined;
 
   return stories.find(
-    (s) => s.id === storyId && s.category.replace(/\s+/g, '-').toLowerCase() === slug
+    (s) =>
+      s.id === storyId &&
+      s.category.replace(/\s+/g, '-').toLowerCase() === slug
   );
 }
 
+// Generate metadata for this page
 export async function generateMetadata(
   { params }: { params: Params },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const story = getStory(params);
+
   if (!story) {
     return { title: 'Story Not Found' };
   }
 
   const previousImages = (await parent).openGraph?.images || [];
-  const title =
-    story.title?.trim().length ? story.title : `${story.category} Story #${story.id}`;
-  const description =
-    story.description?.trim().length
-      ? story.description
-      : 'Read this story from Siddiqui Welfare Society.';
+  const displayTitle = story.title?.trim().length
+    ? story.title
+    : `${story.category} Story #${story.id}`;
+  const displayDescription = story.description?.trim().length
+    ? story.description
+    : 'Read this story from Siddiqui Welfare Society.';
 
   return {
-    title,
-    description,
+    title: displayTitle,
+    description: displayDescription,
     openGraph: {
-      title,
-      description,
+      title: displayTitle,
+      description: displayDescription,
       images: [story.image, ...previousImages],
     },
   };
 }
 
+// The page component
 export default function StoryDetailPage({ params }: { params: Params }) {
   const story = getStory(params);
   if (!story) notFound();
@@ -90,6 +97,7 @@ export default function StoryDetailPage({ params }: { params: Params }) {
   );
 }
 
+// Generate static paths for build
 export async function generateStaticParams(): Promise<Params[]> {
   return stories.map((story) => ({
     slug: story.category.replace(/\s+/g, '-').toLowerCase(),
