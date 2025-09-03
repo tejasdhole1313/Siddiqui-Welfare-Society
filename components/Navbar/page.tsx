@@ -236,7 +236,7 @@ function Navbar() {
                             <div key={index}>
                                 <Link
                                     href={item.path}
-                                    className={`flex items-center justify-between font-medium text-lg tracking-wide py-2 transition-all duration-300 hover:text-blue-600 hover:translate-x-2 ${isActive ? 'text-blue-600' : 'text-gray-700'}`}
+                                    className={`flex items-center justify-between font-medium text-lg tracking-wide py-2 transition-all duration-300 hover:text-red-600 hover:translate-x-2 ${isActive ? 'text-red-600' : 'text-gray-700'}`}
                                     onClick={(e) => {
                                         if (item.subMenu) {
                                             e.preventDefault();
@@ -252,7 +252,7 @@ function Navbar() {
                                 {item.subMenu && openDropdown === item.title && (
                                     <div className="pl-4 mt-2 space-y-2">
                                         {item.subMenu.map((subItem, subIndex) => (
-                                            <Link key={subIndex} href={subItem.path} onClick={toggleMobileMenu} className={`block text-base py-1 hover:text-blue-600 ${pathname === subItem.path ? 'text-blue-600' : 'text-gray-600'}`}>
+                                            <Link key={subIndex} href={subItem.path} onClick={toggleMobileMenu} className={`block text-base py-1 hover:text-red-600 ${pathname === subItem.path ? 'text-red-600' : 'text-gray-600'}`}>
                                                 {subItem.title}
                                             </Link>
                                         ))}

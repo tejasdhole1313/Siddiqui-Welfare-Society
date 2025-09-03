@@ -243,7 +243,11 @@ export default function Home() {
                         {storyToShow.description}
                       </p>
                       <p className="text-sm text-gray-500 mt-auto pt-4">
-                        {new Date(storyToShow.date).toLocaleDateString()}
+                        {new Date(storyToShow.date).toLocaleDateString('en-CA', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })}
                       </p>
                     </div>
                   </div>
