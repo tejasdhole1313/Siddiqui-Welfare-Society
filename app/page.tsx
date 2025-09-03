@@ -17,7 +17,6 @@ if (typeof window !== "undefined") {
 const slides = [
   {
     text: "Siddiqui Welfare Society",
-    // Use absolute path and correct file extension casing (Linux servers are case-sensitive)
     bg: "/images/bg-01.JPG"
   },
   {
