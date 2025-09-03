@@ -3,58 +3,60 @@ import { notFound } from 'next/navigation';
 import NextImage from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next';
 
-// Define params for this route
-type Params = {
-  id: string;
-  slug: string;
+// In Next.js App Router, params is now async and must be awaited
+// https://nextjs.org/docs/messages/sync-dynamic-apis
+
+type Params = { id: string; slug: string };
+
+type Props = {
+  params: Promise<Params>;
 };
 
-// Helper function to get a story
-function getStory({ slug, id }: Params): Story | undefined {
-  const storyId = parseInt(id, 10);
-  if (isNaN(storyId)) return undefined;
-
+async function getStory(paramsPromise: Props['params']): Promise<Story | undefined> {
+  const params = await paramsPromise; // await params before using its properties
+  const storyId = parseInt(params.id, 10);
+  if (isNaN(storyId)) {
+    return undefined;
+  }
   return stories.find(
-    (s) =>
-      s.id === storyId &&
-      s.category.replace(/\s+/g, '-').toLowerCase() === slug
+    (s) => s.id === storyId && s.category.replace(/\s+/g, '-').toLowerCase() === params.slug
   );
 }
 
-// Generate metadata for this page
+// Generate metadata for the page
 export async function generateMetadata(
-  { params }: { params: Params },
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const story = getStory(params);
+  const story = await getStory(params);
 
   if (!story) {
-    return { title: 'Story Not Found' };
+    return {
+      title: 'Story Not Found',
+    };
   }
 
+  // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
-  const displayTitle = story.title?.trim().length
-    ? story.title
-    : `${story.category} Story #${story.id}`;
-  const displayDescription = story.description?.trim().length
-    ? story.description
-    : 'Read this story from Siddiqui Welfare Society.';
 
   return {
-    title: displayTitle,
-    description: displayDescription,
+    title: story.title,
+    description: story.description,
     openGraph: {
-      title: displayTitle,
-      description: displayDescription,
+      title: story.title,
+      description: story.description,
       images: [story.image, ...previousImages],
     },
   };
 }
 
-// The page component
-export default function StoryDetailPage({ params }: { params: Params }) {
-  const story = getStory(params);
-  if (!story) notFound();
+// The component is async and awaits params to comply with Next.js dynamic APIs
+export default async function StoryDetailPage({ params }: Props) {
+  const story = await getStory(params);
+
+  if (!story) {
+    notFound();
+  }
 
   return (
     <main className="pt-24 bg-white text-gray-800">
@@ -64,9 +66,7 @@ export default function StoryDetailPage({ params }: { params: Params }) {
             {story.category}
           </p>
           <h1 className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {story.title?.trim().length
-              ? story.title
-              : `${story.category} Story #${story.id}`}
+            {story.title}
           </h1>
           <p className="mt-4 text-lg text-gray-500">
             {new Date(story.date).toLocaleDateString('en-US', {
@@ -91,14 +91,15 @@ export default function StoryDetailPage({ params }: { params: Params }) {
         <div className="prose prose-lg prose-red mx-auto">
           <p className="lead">{story.description}</p>
           {story.desc && <p>{story.desc}</p>}
+          {/* You can add more detailed story content here */}
         </div>
       </article>
     </main>
   );
 }
 
-// Generate static paths for build
-export async function generateStaticParams(): Promise<Params[]> {
+// Generate static paths for all stories at build time
+export async function generateStaticParams() {
   return stories.map((story) => ({
     slug: story.category.replace(/\s+/g, '-').toLowerCase(),
     id: story.id.toString(),

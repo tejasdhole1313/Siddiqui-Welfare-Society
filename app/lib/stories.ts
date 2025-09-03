@@ -11,43 +11,33 @@ export interface Story {
 
 export const stories: Story[] = [
   {
-     id: 1,
-  category: "Education",
-  title: "Siddiqui Welfare Society Empowers Underprivileged Communities Through Computer Training and Educational Programs",
-  description: "SWS provides basic computer training in desktop publishing (DTP), Microsoft Office, and Tally, ensuring marginalized individuals gain essential digital skills.",
-  desc: `The Siddiqui Welfare Society (SWS) has been making significant strides in empowering underprivileged communities through a range of educational and skill development programs. Focusing on academic education, computer technology training, and self-employment initiatives, SWS equips individuals with tools to break the cycle of poverty and achieve economic independence.
-
-One of the flagship programs offered by SWS is basic computer training in areas such as desktop publishing (DTP), Microsoft Office, and Tally. Recognizing the increasing importance of computer literacy in today's digital age, SWS proactively ensures that individuals from marginalized backgrounds are not left behind. By imparting these essential skills, participants enhance their employability and access wider job opportunities across industries.
-
-The computer training courses go beyond technical skills; they also instill confidence and empower individuals to navigate the digital landscape with ease. Participants develop proficiency in fundamental software applications, making them more competitive in the job market and better prepared for higher education or vocational training.`,
-  image: "/images/top01.png",
-  date: "2024-10-08",
-  topStory: true,
-},
+    id: 1,
+    category: "Education",
+    title: "Empowering Communities Through Computer Training",
+    description: "Making significant strides in empowering underprivileged communities through a range of educational and skill development programs.",
+    image: "/images/top01.png",
+    date: "2024-10-08",
+    topStory: true,
+  },
   {
     id: 2,
     category: "Medical",
-    title: "Siddiqui Welfare Society’s Global Foundation Steps Us for Blood Shortages with Donation Camps",
-    description: "The precious resource for survival that ‘blood’ is often goes overlooked until it’s desperately required. Unfortunately, India experiences alarming scarcity of this life-saving drop, thus, throwing recurring challenges for the healthcare sector.",
-    desc: "The precious resource for survival that ‘blood’ is often goes overlooked until it’s desperately required. Unfortunately, India experiences alarming scarcity of this life-saving drop, thus, throwing recurring challenges for the healthcare sector. Reports say that someone in every 2 seconds in India needs blood for recovery. In fact, its demand reaches an estimated 14.6 million units annually. To address this pressing issue, Aurangabad’s Siddique Welfare Society’s Global Foundation arranges frequent blood donation camps to maintain sufficiency in blood banks.",
+    title: "Global Foundation Steps Up for Blood Shortages",
+    description: "India experiences alarming scarcity of this life-saving drop, throwing recurring challenges for the healthcare sector.",
+    desc: "Blood shortages have become a pressing concern across India, affecting millions of lives.",
     image: "/images/top02.png",
     date: "2024-09-23",
     topStory: true,
   },
   {
- id: 3,
-  category: "Community",
-  title: "Lifeline to Recovery: How Siddiqui Welfare Society’s Global Foundation Provides Medical Financial Assistance for the Poor",
-  description: "India has seen a rise in lifestyle diseases like heart disease, diabetes, and cancer, increasing medical expenses for the poor.",
-  desc: `Here’s a reality-check!  
-Over the past few years, India has witnessed a significant increase in lifestyle diseases such as heart disease, diabetes, and cancer. Medical expenses have risen due to growing demand, technological advancements, medical developments, the COVID-19 pandemic, rising healthcare service charges, and other factors. This raises the alarming question – how can the poor afford basic or life-saving medical treatment? For many, the answer lies in Siddiqui Welfare Society’s Global Foundation, a non-profit organization providing medical financial assistance in Aurangabad.
-
-How Does the Organisation Aid?  
-The NGO acts as a beacon of hope where others hesitate. A trusted name for years, it provides a lifeline to economically weaker people facing insurmountable medical expenses. The foundation bridges the gap between the underprivileged and critical treatment by offering financial help to poor patients in India.`,
-  image: "/images/top03.png",
-  date: "2024-10-06",
-  topStory: true,
-},
+    id: 3,
+    category: "Community",
+    title: "Providing Hope with Free Dialysis Program",
+    description: "Our commendable initiative of providing quality dialysis treatment has enhanced the accessibility for those who are unable to afford it.",
+    image: "/images/top03.png",
+    date: "2024-10-06",
+    topStory: true,
+  },
   {
     id: 4,
     category: "Culture",
