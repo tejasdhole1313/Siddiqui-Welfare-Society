@@ -17,15 +17,16 @@ if (typeof window !== "undefined") {
 const slides = [
   {
     text: "Siddiqui Welfare Society",
-   bg: './images/bg-01.jpg'
+    // Use absolute path and correct file extension casing (Linux servers are case-sensitive)
+    bg: "/images/bg-01.JPG"
   },
   {
     text: "Global Medical & Educational Foundation",
-    bg: "./images/bg-5.jpg"
+    bg: "/images/bg-5.JPG"
   },
   {
     text: "Empowering Communities for a Better Tomorrow",
-    bg: "./images/bg-03.jpg"
+    bg: "/images/bg-03.JPG"
   }
 ];
 
