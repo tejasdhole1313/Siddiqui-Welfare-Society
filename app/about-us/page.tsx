@@ -300,7 +300,7 @@ useEffect(() => {
     {/* Activity 1 */}
     <div>
       <Image
-        src="/images/Acitivity01.PNG" 
+        src="/images/Acitivity01.png" 
         alt="Aiding small businesses"
         width={1200}
         height={400}
