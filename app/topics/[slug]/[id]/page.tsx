@@ -6,7 +6,21 @@ import { topicItemsBySlug } from '@/app/lib/topic-items'
 export default async function TopicDetailPage({ params }: { params: Promise<{ slug: string; id: string }> }) {
   const { slug, id } = await params
   const items = topicItemsBySlug[slug] || []
-  const item = items.find((i) => String(i.id) === String(id))
+
+  // Support title-based URLs and maintain backward compatibility with numeric IDs
+  const decode = (v: string) => decodeURIComponent(v)
+  const slugify = (s: string) =>
+    s
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
+
+  const decodedId = decode(id)
+  let item = items.find((i) => slugify(i.title) === decodedId)
+  if (!item) {
+    item = items.find((i) => String(i.id) === String(decodedId))
+  }
 
   if (!item) {
     return (

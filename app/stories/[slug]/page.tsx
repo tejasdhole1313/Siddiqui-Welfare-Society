@@ -64,7 +64,13 @@ const getFilteredStories = () => {
             {filteredStories.length > 0 ? (
               filteredStories.map((story) => (
                 <Link
-                  href={`/stories/${encodeURIComponent(story.category.replace(/\s+/g, '-').toLowerCase())}/${story.id}`}
+                  href={`/stories/${encodeURIComponent(story.category.replace(/\s+/g, '-').toLowerCase())}/${encodeURIComponent(
+                    story.title
+                      .toLowerCase()
+                      .trim()
+                      .replace(/[^a-z0-9]+/g, '-')
+                      .replace(/(^-|-$)/g, '')
+                  )}`}
                   key={story.id}
                   className="block group focus:outline-none"
                 >

@@ -14,13 +14,34 @@ type Props = {
 
 async function getStory(paramsPromise: Props['params']): Promise<Story | undefined> {
   const params = await paramsPromise; // await params before using its properties
-  const storyId = parseInt(params.id, 10);
-  if (isNaN(storyId)) {
-    return undefined;
+
+  const decode = (v: string) => decodeURIComponent(v)
+  const slugify = (s: string) =>
+    s
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '')
+
+  const decodedId = decode(params.id)
+  const categorySlug = params.slug
+
+  // First try by title slug
+  let story = stories.find(
+    (s) => slugify(s.title) === decodedId && s.category.replace(/\s+/g, '-').toLowerCase() === categorySlug
+  )
+
+  // Fallback to numeric id for backward compatibility
+  if (!story) {
+    const storyId = parseInt(decodedId, 10)
+    if (!Number.isNaN(storyId)) {
+      story = stories.find(
+        (s) => s.id === storyId && s.category.replace(/\s+/g, '-').toLowerCase() === categorySlug
+      )
+    }
   }
-  return stories.find(
-    (s) => s.id === storyId && s.category.replace(/\s+/g, '-').toLowerCase() === params.slug
-  );
+
+  return story
 }
 
 // Generate metadata for the page

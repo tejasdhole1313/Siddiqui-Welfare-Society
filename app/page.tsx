@@ -8,12 +8,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaHeart, FaUserGraduate, FaHandHoldingMedical, FaUtensils, FaTooth, FaHeartbeat } from 'react-icons/fa';
 import { stories } from "./lib/stories";
 import Link from "next/link";
-
-
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-
 const slides = [
   {
     text: "Siddiqui Welfare Society",
@@ -33,9 +30,6 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const mainRef = useRef(null);
   const heroH1Ref = useRef<HTMLHeadingElement>(null);
-
-
-
   // Hero sliding text
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,7 +37,6 @@ export default function Home() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
   // GSAP animations
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -61,7 +54,6 @@ export default function Home() {
             opacity: 0, y: 30, duration: 0.8, ease: "power3.out", delay: 0.5
           });
         }
-
         // Fade-in sections
         const sections = gsap.utils.toArray<HTMLElement>('.fade-in-section');
         sections.forEach((section) => {
@@ -77,7 +69,6 @@ export default function Home() {
             }
           });
         });
-
         // Counters
         const counters = gsap.utils.toArray<HTMLElement>('.counter');
         counters.forEach((counter) => {
@@ -85,7 +76,6 @@ export default function Home() {
           const targetAttr = counter.dataset.target ?? "0";
           const parsed = parseInt(targetAttr, 10);
           const target = Number.isNaN(parsed) ? 0 : parsed;
-
           const counterObj = { val: 0 };
           gsap.to(counterObj, {
             val: target,
@@ -106,7 +96,6 @@ export default function Home() {
     }, mainRef);
     return () => ctx.revert();
   }, []);
-
   const keyAreas = [
     { label: "Education", icon: <FaUserGraduate />, href: "/topics/educational" },
     { label: "Medical", icon: <FaHandHoldingMedical />, href: "/topics/medical" },
@@ -115,13 +104,11 @@ export default function Home() {
     { label: "ECG", icon: <FaHeartbeat />, href: "/topics/ecg" },
     { label: "Food & Meals", icon: <FaUtensils />, href: "/topics/food-meals" },
   ];
-
   const impactStats = [
     { target: 10000, label: "People Helped" },
     { target: 250, label: "Medical Camps" },
     { target: 5000, label: "Students Educated" },
   ];
-
   const categoryFilters = [
     { href: "/stories/top-stories", label: "Top Stories" },
     { href: "/stories/latest-stories", label: "Latest Stories" },
@@ -129,7 +116,6 @@ export default function Home() {
     { href: "/stories/community", label: "Community" },
     { href: "/stories/culture", label: "Culture" },
   ];
-
   return (
     <main ref={mainRef} className="bg-white text-gray-800">
 
@@ -183,8 +169,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-
       {/* TOP STORIES BY CATEGORY */}
       <section className="py-12 bg-white fade-in-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -197,7 +181,7 @@ export default function Home() {
               "Community",
               "Culture",
               "Activism",
-              "Top Stories", // This will pick a top story from all top stories
+              "Top Stories", 
             ].map((categoryName, idx) => {
               let storyToShow = null;
 

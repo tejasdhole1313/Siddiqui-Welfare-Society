@@ -60,7 +60,13 @@ export default function TopicCard({
           <div className="mt-auto">
            
             {date && (
-              <p className="text-sm text-gray-500 mt-2">{new Date(date).toLocaleDateString()}</p>
+              <p className="text-sm text-gray-500 mt-2">
+                {new Date(date).toLocaleDateString('en-CA', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                })}
+              </p>
             )}
           </div>
            <div className="flex items-center text-red-600 font-semibold justify-end cursor-pointer">

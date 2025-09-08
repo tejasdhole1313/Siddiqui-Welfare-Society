@@ -34,7 +34,13 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
               date={it.date}
               imageSrc={it.image}
               category={it.category}
-              path={`/topics/${it.slug}/${it.id}`}
+              path={`/topics/${it.slug}/${encodeURIComponent(
+                it.title
+                  .toLowerCase()
+                  .trim()
+                  .replace(/[^a-z0-9]+/g, '-')
+                  .replace(/(^-|-$)/g, '')
+              )}`}
             />
           ))}
         </div>
