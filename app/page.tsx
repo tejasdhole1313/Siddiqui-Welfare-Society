@@ -113,7 +113,7 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  // small 3D tilt for cards
+ 
   function handleTilt(e: React.MouseEvent, el: HTMLDivElement | null) {
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -121,8 +121,8 @@ export default function Home() {
     const y = e.clientY - rect.top; 
     const cx = rect.width / 2;
     const cy = rect.height / 2;
-    const dx = (x - cx) / cx; // -1 to 1
-    const dy = (y - cy) / cy; // -1 to 1
+    const dx = (x - cx) / cx;
+    const dy = (y - cy) / cy; 
     const tiltX = (dy * 8).toFixed(2);
     const tiltY = (-dx * 12).toFixed(2);
     el.style.transform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(10px)`;
@@ -204,14 +204,16 @@ export default function Home() {
 
        
 
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <Link href="/donation" className="inline-flex items-center gap-3 bg-red-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg transform transition hover:scale-105">
-              Donate
-            </Link>
-            {/* <Link href="/volunteer" className="inline-flex items-center gap-3 bg-white/10 text-white px-6 py-3 rounded-full font-medium backdrop-blur-sm border border-white/10 hover:scale-105 transition">
-              Volunteer
-            </Link> */}
-          </div>
+         <div className="mt-8 flex items-center justify-center gap-4">
+  <Link
+    href="/donation"
+    className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold bg-red-600 text-white shadow-lg transform transition-all duration-300
+               hover:scale-110 hover:shadow-2xl hover:brightness-110 hover:-translate-y-1 active:scale-95"
+  >
+    Donate
+  </Link>
+</div>
+
         </div>
 
         {/* subtle animated shapes in corners */}
@@ -247,7 +249,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {["Education", "Medical", "Community", "Culture", "Activism", "Top Stories"].map((categoryName, idx) => {
-              let storyToShow: Story | undefined = undefined;
+              let storyToShow: Story | undefined | null = null;
               if (categoryName === "Top Stories") {
                 storyToShow = stories.find((story) => story.topStory);
               } else {
