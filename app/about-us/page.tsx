@@ -7,7 +7,6 @@ import { FiBook, FiActivity, FiAward, FiGlobe } from 'react-icons/fi'
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
 }
-
 export default function AboutUs() {
   const heroRef = useRef<HTMLDivElement>(null)
   const storyRef = useRef<HTMLDivElement>(null)
@@ -41,7 +40,7 @@ export default function AboutUs() {
       );
     }
 
-    
+
   }, []);
 
   if (storyRef.current) {
@@ -152,13 +151,13 @@ export default function AboutUs() {
       <div
         ref={heroRef}
         className="relative text-white py-24 mt-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/about-bg.jpg')" }} 
+        style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div> {/* Dark overlay for readability */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-            About Us
+              About Us
             </h1>
             <p className="text-xl md:text-3xl max-w-4xl mx-auto leading-relaxed">
               Global Medical & Educational Foundation
@@ -343,34 +342,34 @@ export default function AboutUs() {
           </p>
         </div>
 
-      {/* Mission & Vision */}
-<div className=" py-10 px-6 md:px-12">
-  <div ref={missionRef} className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto mb-24">
-    <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-      <div className="flex items-center mb-6">
-        <FiGlobe className="w-10 h-10 text-red-600 mr-4" />
-        <h3 className="text-3xl font-bold text-gray-900">Our Mission</h3>
-      </div>
-      <p className="text-gray-700 text-lg leading-relaxed">
-        To serve our community by providing essential services, educational opportunities,
-        and medical support to those in need, fostering growth and development for all
-        through empathy and compassion.
-      </p>
-    </div>
+        {/* Mission & Vision */}
+        <div className=" py-10 px-6 md:px-12">
+          <div ref={missionRef} className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto mb-24">
+            <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+              <div className="flex items-center mb-6">
+                <FiGlobe className="w-10 h-10 text-red-600 mr-4" />
+                <h3 className="text-3xl font-bold text-gray-900">Our Mission</h3>
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                To serve our community by providing essential services, educational opportunities,
+                and medical support to those in need, fostering growth and development for all
+                through empathy and compassion.
+              </p>
+            </div>
 
-    <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-      <div className="flex items-center mb-6">
-        <FiAward className="w-10 h-10 text-red-600 mr-4" />
-        <h3 className="text-3xl font-bold text-gray-900">Our Vision</h3>
-      </div>
-      <p className="text-gray-700 text-lg leading-relaxed">
-        To create a thriving community where everyone has access to quality education,
-        healthcare, and opportunities for personal and professional growth, regardless
-        of their economic background.
-      </p>
-    </div>
-  </div>
-</div>
+            <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+              <div className="flex items-center mb-6">
+                <FiAward className="w-10 h-10 text-red-600 mr-4" />
+                <h3 className="text-3xl font-bold text-gray-900">Our Vision</h3>
+              </div>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                To create a thriving community where everyone has access to quality education,
+                healthcare, and opportunities for personal and professional growth, regardless
+                of their economic background.
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Team Section */}
         <div className="mb-24">

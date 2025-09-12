@@ -1,14 +1,26 @@
 export const events = [
-    {
+  {
   id: 1,
-  title: "Diagnostic Free Health  Checkup Campaigns",
+  title: " Dialysis Free Health Checkup Campaigns",
   description:
     "A healthcare initiative providing free diagnostic tests including blood tests, sugar level checks, blood pressure monitoring, and other essential screenings. The program ensures early detection and awareness of common health conditions.",
-  date: "2025-10-18",
-  image: "/images/di-01.JPG",
+  date: "2024-10-06",
   time: "9:00 AM",
-  topEvent: true
+  image: "/images/di-01.JPG",
+  topEvent: true,
+  desctitle1 :"Introduction",
+  desctitle2: "Addressing Healthcare Needs :",
+  desctitle3 : "Quality Care for All",
+  desctitle4:"Community Empowerment",
+  desctitle5 :"Promoting Preventive Healthcare",
+  desc: `
+       Siddiqui Welfare Society has launched Diagnostic Free Health Checkup Campaigns aimed at improving community well-being by offering free medical screenings. These initiatives focus on early detection of health conditions and spreading awareness among underprivileged communities. By providing essential diagnostic services such as blood tests, sugar level checks, and blood pressure monitoring, the Society ensures that individuals receive timely insights into their health status.`,
+desc2: " In many communities, people neglect preventive healthcare due to financial limitations or lack of awareness. The free health checkup campaigns bridge this gap by making essential diagnostic services accessible to all, empowering individuals to take proactive steps toward managing their health.",
+desc3 :"The campaigns emphasize equitable access to healthcare. By setting up camps in localities and providing professional medical assistance, Siddiqui Welfare Society ensures that people from all backgrounds can benefit from these services, regardless of their financial circumstances.",
+desc4 :" These health checkup drives not only improve physical well-being but also build awareness around lifestyle changes, preventive care, and the importance of regular medical checkups. This knowledge empowers communities to live healthier and more productive lives.",
+desc5 :": Early diagnosis is key to reducing the long-term impact of chronic illnesses. By encouraging preventive healthcare practices, the Society reduces the burden on hospitals and fosters a sustainable approach to community health.",
 },
+
   {
     id: 2,
     title: "Free Ambulance Service ",

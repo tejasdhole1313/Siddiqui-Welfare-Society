@@ -100,8 +100,18 @@ export default function EventDetail() {
                     <p className="font-medium">{event.date}{event.time ? ` · ${event.time}` : ''}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">About</p>
-                    <p className="font-medium leading-relaxed">{event.description}</p>
+                    <p className="  font-bold  text-2xl">About</p>
+                    <h2 className='text-lg font-bold py-5'>{event.desctitle1} </h2>
+                    <p className="font-medium leading-relaxed text-justify">{event.desc}</p>
+                    <h2 className='text-lg font-bold py-5'>{event.desctitle2} </h2>
+                    <p className="font-medium leading-relaxed text-justify">{event.desc2}</p>
+                     <h2 className='text-lg font-bold py-5'>{event.desctitle3} </h2>
+                    <p className="font-medium leading-relaxed text-justify">{event.desc3}</p>
+                     <h2 className='text-lg font-bold py-5'>{event.desctitle4} </h2>
+                    <p className="font-medium leading-relaxed text-justify">{event.desc4}</p>
+                     <h2 className='text-lg font-bold py-5'>{event.desctitle5} </h2>
+                    <p className="font-medium leading-relaxed text-justify">{event.desc5}</p>
+
                   </div>
                 </div>
                 <div className="mt-8">

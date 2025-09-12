@@ -49,7 +49,6 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
-        <EmailSection/>
         <Footer />
       </body>
     </html>

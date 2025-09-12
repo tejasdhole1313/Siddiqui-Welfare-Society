@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { FiChevronDown } from 'react-icons/fi'
 import { menuItems } from '../menu-items'
 import { usePathname } from 'next/navigation'
-
+import { Card3D } from "@/components/Card3D";
 
 function Navbar() {
     const navRef = useRef<HTMLElement>(null)
@@ -20,11 +20,11 @@ function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
     const dropdownRef = useRef<HTMLUListElement>(null)
     const pathname = usePathname()
-    // Treat only home and topics as hero pages; stories should use dark text
+   
     const isHeroPage = pathname === '/' || pathname.startsWith('/topics')
 
     useEffect(() => {
-        // Initial animation on mount
+     
         const tl = gsap.timeline()
 
         tl.fromTo(navRef.current,
@@ -43,7 +43,6 @@ function Navbar() {
             )
     }, [])
 
-    // Toggle solid background and subtle 3D lift on scroll
     useEffect(() => {
         const handleScroll = () => {
             const scrolled = window.scrollY > 10
@@ -146,20 +145,21 @@ function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-18">
-                    {/* Logo */}
-                    <div ref={logoRef} className="flex-shrink-0 py-2">
-                        <Link href="/">
-                            <NextImage
-                                src="/images/logo.png" 
-                                alt="Brand Logo"
-                                width={220}
-                                height={72}
-                                className="object-contain"
-                                priority
-                                style={{ height: 'auto', width: 'auto' ,paddingBottom: '5px' , paddingTop: '5px'}}
-                            />
-                        </Link>
-                    </div>
+                  {/* Logo */}
+<div ref={logoRef} className="flex-shrink-0  mb-1.5">
+    <Link href="/">
+        <NextImage
+            src="/images/logo.png" 
+            alt="Brand Logo"
+            width={200}
+            height={68}
+            className="object-contain"
+            priority
+            style={{ height: 'auto', width: 'auto' }}
+        />
+    </Link>
+</div>
+
 
                     {/* Desktop Menu */}
                     <ul

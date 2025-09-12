@@ -154,7 +154,6 @@ useEffect(() => {
 
                 {/* Form */}
                 <form className="flex flex-col w-full space-y-6">
-                  {/* Name Field */}
                   <div className="flex flex-col">
                     <label htmlFor="name" className="text-gray-800 font-medium mb-2">
                       Name<span className="text-red-500">*</span>

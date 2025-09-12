@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useMemo, useRef } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import {
   FiHeart,
 
@@ -9,6 +9,7 @@ import {
   FiBriefcase,
   FiShoppingBag,
   FiChevronRight,
+  FiChevronDown,
 } from "react-icons/fi"
 import { FaRupeeSign } from "react-icons/fa"
 import { motion } from "framer-motion"
@@ -21,6 +22,7 @@ if (typeof window !== "undefined") {
 }
 
 export default function Donation() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const heroRef = useRef<HTMLDivElement>(null)
   const bannerRef = useRef<HTMLDivElement>(null)
@@ -157,7 +159,7 @@ export default function Donation() {
           className="space-y-6 text-gray-700"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
-            Welcome to the Siddiqui Welfare Society!
+            Welcome to the Siddiqui Welfare Society !
           </h2>
           <p>
             Your support plays a crucial role in helping us uplift and empower our
@@ -184,7 +186,7 @@ export default function Donation() {
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/10 to-transparent" />
         </div>
       </section>
-          <p className="font-bold">Here are some impactful options for charity and donation</p>
+          <h1 className="font-bold  text-4xl text-center">Here are some impactful options for charity and donation</h1 >
         </motion.div>
 
         {/* Cause Cards */}
@@ -243,82 +245,54 @@ export default function Donation() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-10"
         >
           {/* Left: Ways to Donate - animated list */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="rounded-md border border-gray-200 bg-white p-6"
+         <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      className="rounded-2xl bg-white shadow-md border border-gray-200 p-6"
+    >
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-4">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-white">
+          <FaRupeeSign className="h-5 w-5" />
+        </div>
+        <h3 className="text-lg md:text-xl font-semibold text-gray-900">Ways to Donate</h3>
+      </div>
+
+      {/* List */}
+      <motion.ul
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.05 } }
+        }}
+        className="space-y-4"
+      >
+        {causes.map((item, index) => (
+          <motion.li
+            key={item.title}
+            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+            className="group rounded-xl bg-gray-50 hover:bg-white transition border border-gray-100 p-4 shadow-sm hover:shadow-md cursor-pointer"
+            onClick={() => setOpenIndex(openIndex === index ? null : index)}
           >
-
-            <div className="flex items-center gap-3">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-600 text-white">
-                <FaRupeeSign className="h-5 w-5" />
+            <div className="flex items-start gap-3">
+              <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-md bg-red-100 text-red-600">
+                {openIndex === index ? <FiChevronDown className="h-4 w-4" /> : <FiChevronRight className="h-4 w-4" />}
               </div>
-              <h4 className="text-xl font-bold text-gray-900">Ways to Donate</h4>
+              <div className="flex-1">
+                <p className="font-medium text-gray-900">{item.title}</p>
+                {openIndex === index && (
+                  <p className="mt-1 text-sm text-gray-600">{item.description}</p>
+                )}
+              </div>
             </div>
-
-            <motion.ul
-              className="mt-6 space-y-3"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: 0.06 } }
-              }}
-            >
-              {[
-                {
-                  title: "Online Donations",
-                  desc:
-                    "Use this page to securely make a one-time or recurring donation from anywhere in the world."
-                },
-                {
-                  title: "Bank Transfer",
-                  desc:
-                    "Reach out to us for our bank account details to donate via direct transfer."
-                },
-                {
-                  title: "In-Person Donations",
-                  desc:
-                    "Visit our office or designated donation centers to contribute in person."
-                },
-                {
-                  title: "Fundraising Events",
-                  desc:
-                    "Participate in our campaigns and events that directly support our programs."
-                },
-                {
-                  title: "Corporate Donations",
-                  desc:
-                    "Explore partnerships and sponsorships to support community outreach."
-                },
-                {
-                  title: "Other Initiatives",
-                  desc:
-                    "Stay updated on ongoing campaigns and special donation drives on our website and social media."
-                }
-              ].map((item) => (
-                <motion.li
-                  key={item.title}
-                  variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
-                  className="group relative rounded-xl border border-gray-100 bg-white/60 p-4 shadow-sm transition hover:shadow-md"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="mt-1 inline-flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-red-50 text-red-600 ring-1 ring-red-100">
-                      <FiChevronRight className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{item.title}</p>
-                      <p className="mt-1 text-sm text-gray-600">{item.desc}</p>
-                    </div>
-                  </div>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
+          </motion.li>
+        ))}
+      </motion.ul>
+    </motion.div>
           {/* Right: Contact form - refined, responsive */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
