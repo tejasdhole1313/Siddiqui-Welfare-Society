@@ -7,6 +7,7 @@ import { FiChevronDown } from 'react-icons/fi'
 import { menuItems } from '../menu-items'
 import { usePathname } from 'next/navigation'
 
+
 function Navbar() {
     const navRef = useRef<HTMLElement>(null)
     const logoRef = useRef<HTMLDivElement>(null)
@@ -64,6 +65,7 @@ function Navbar() {
         setIsMobileMenuOpen(!isMobileMenuOpen)
 
         if (!isMobileMenuOpen) {
+            // Open animation
             gsap.set(mobileMenuRef.current, { display: 'block' })
             gsap.fromTo(mobileMenuRef.current,
                 { height: 0, opacity: 0 },
@@ -74,6 +76,7 @@ function Navbar() {
                 { y: 0, opacity: 1, duration: 0.3, stagger: 0.1, delay: 0.2, ease: "power2.out" }
             )
         } else {
+            // Close animation
             gsap.to(mobileMenuRef.current?.children || [],
                 { y: -20, opacity: 0, duration: 0.2, stagger: 0.05, ease: "power2.in" }
             )
@@ -87,12 +90,15 @@ function Navbar() {
     }
 
     useEffect(() => {
+        // Animate dropdown opening
         if (openDropdown && dropdownRef.current) {
             gsap.fromTo(dropdownRef.current,
                 { y: 20, opacity: 0 }, 
                 { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' })
         }
     }, [openDropdown])
+
+    // Animate dropdown closing
     useEffect(() => {
         if (closingDropdown && dropdownRef.current) {
             gsap.to(dropdownRef.current, {
@@ -118,6 +124,7 @@ function Navbar() {
             }
         }
     }
+
     const handleSubMenuItemHover = (e: React.MouseEvent<HTMLAnchorElement>, isHover: boolean) => {
         const target = e.currentTarget
         const isActive = target.getAttribute('href') === pathname
@@ -149,7 +156,7 @@ function Navbar() {
                                 height={72}
                                 className="object-contain"
                                 priority
-                                style={{ height: 'auto', width: 'auto' ,paddingBottom: '8px' , paddingTop: '5px'}}
+                                style={{ height: 'auto', width: 'auto' ,paddingBottom: '5px' , paddingTop: '5px'}}
                             />
                         </Link>
                     </div>

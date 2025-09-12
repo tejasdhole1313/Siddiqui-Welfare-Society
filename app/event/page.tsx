@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { events } from '@/app/lib/events'
 
+
 export default function Event() {
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
@@ -29,6 +30,7 @@ export default function Event() {
 
       {/* Event Listing */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
         <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-3">
           {events.map((ev, i) => (
             <motion.div
