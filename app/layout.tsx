@@ -3,7 +3,6 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/page";
 import Footer from "@/components/Footer";
-import EmailSection from "@/components/email";
 
 const inter = Inter({
   subsets: ["latin"],
