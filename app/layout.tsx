@@ -16,9 +16,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NODE_ENV === 'production' 
+    ? process.env.NEXTAUTH_URL || 'https://yourdomain.com' 
+    : 'http://localhost:3000'),
   title: "Siddiqui Welfare Society - Empowering Communities",
   description: "Empowering communities through education, medical aid, and support programs. Join us in making a difference.",
+  icons: {
+    icon: './footer.png',
+  },
+  openGraph: {
+    title: "Siddiqui Welfare Society - Empowering Communities",
+    description: "Empowering communities through education, medical aid, and support programs. Join us in making a difference.",
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Siddiqui Welfare Society - Empowering Communities",
+    description: "Empowering communities through education, medical aid, and support programs. Join us in making a difference.",
+  },
 };
 
 export default function RootLayout({

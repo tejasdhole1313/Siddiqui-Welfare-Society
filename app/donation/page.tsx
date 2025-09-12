@@ -127,11 +127,9 @@ export default function Donation() {
             className="text-center"
           >
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-              Siddiqui Welfare Society
+              Donation
             </h1>
-            <p className="text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Global Medical & Educational Foundation
-            </p>
+           
             <div className="mt-8">
               <a
                 href="#donate"

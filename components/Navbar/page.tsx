@@ -64,7 +64,6 @@ function Navbar() {
         setIsMobileMenuOpen(!isMobileMenuOpen)
 
         if (!isMobileMenuOpen) {
-            // Open animation
             gsap.set(mobileMenuRef.current, { display: 'block' })
             gsap.fromTo(mobileMenuRef.current,
                 { height: 0, opacity: 0 },
@@ -75,7 +74,6 @@ function Navbar() {
                 { y: 0, opacity: 1, duration: 0.3, stagger: 0.1, delay: 0.2, ease: "power2.out" }
             )
         } else {
-            // Close animation
             gsap.to(mobileMenuRef.current?.children || [],
                 { y: -20, opacity: 0, duration: 0.2, stagger: 0.05, ease: "power2.in" }
             )
@@ -89,21 +87,18 @@ function Navbar() {
     }
 
     useEffect(() => {
-        // Animate dropdown opening
         if (openDropdown && dropdownRef.current) {
             gsap.fromTo(dropdownRef.current,
                 { y: 20, opacity: 0 }, 
                 { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' })
         }
     }, [openDropdown])
-
-    // Animate dropdown closing
     useEffect(() => {
         if (closingDropdown && dropdownRef.current) {
             gsap.to(dropdownRef.current, {
                 y: 20,
                 opacity: 0,
-                duration: 0.2, // This is the close duration
+                duration: 0.2,
                 ease: 'power2.in',
                 onComplete: () => {
                     setClosingDropdown(null)
@@ -113,21 +108,20 @@ function Navbar() {
     }, [closingDropdown])
 
     const handleDropdown = (title: string | null) => {
-        if (title) { // Mouse enters a new item
-            if (closingDropdown) setClosingDropdown(null) // Cancel any close animation
+        if (title) { 
+            if (closingDropdown) setClosingDropdown(null) 
             if (title !== openDropdown) setOpenDropdown(title)
-        } else { // Mouse leaves an item
+        } else { 
             if (openDropdown) {
                 setClosingDropdown(openDropdown)
                 setOpenDropdown(null)
             }
         }
     }
-
     const handleSubMenuItemHover = (e: React.MouseEvent<HTMLAnchorElement>, isHover: boolean) => {
         const target = e.currentTarget
         const isActive = target.getAttribute('href') === pathname
-        const defaultColor = isActive ? '#dc2626' : '#4b5563' // red-600 or gray-600
+        const defaultColor = isActive ? '#dc2626' : '#4b5563' 
         gsap.to(target, {
             x: isHover ? 5 : 0,
             color: isHover ? '#dc2626' : defaultColor,
@@ -146,7 +140,7 @@ function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-18">
                     {/* Logo */}
-                    <div ref={logoRef} className="flex-shrink-0">
+                    <div ref={logoRef} className="flex-shrink-0 py-2">
                         <Link href="/">
                             <NextImage
                                 src="/images/logo.png" 
@@ -155,7 +149,7 @@ function Navbar() {
                                 height={72}
                                 className="object-contain"
                                 priority
-                                style={{ height: 'auto', width: 'auto' }}
+                                style={{ height: 'auto', width: 'auto' ,paddingBottom: '8px' , paddingTop: '5px'}}
                             />
                         </Link>
                     </div>
@@ -196,15 +190,6 @@ function Navbar() {
                             )
                         })}
                     </ul>
-
-                    {/* CTA Button */}
-                    {/* <div className="hidden md:block">
-                        <button
-                            className="bg-red-600 text-white px-6 py-2 rounded-full font-medium text-sm tracking-wide transition-all duration-300 hover:bg-red-900 hover:shadow-lg transform hover:-translate-y-0.5"
-                        >
-                            Get Started
-                        </button>
-                    </div> */}
 
                     {/* Hamburger Menu */}
                     <button
@@ -261,9 +246,6 @@ function Navbar() {
                             </div>
                         )
                     })}
-                    {/* <button className="w-full bg-red-600 text-white px-6 py-3 rounded-full font-medium text-sm tracking-wide transition-all duration-300 hover:bg-red-900 mt-4">
-                        Get Started
-                    </button> */}
                 </div>
             </div>
         </nav>

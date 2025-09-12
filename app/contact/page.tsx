@@ -3,15 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-
-// Contact page with scroll-triggered form reveal and animated headings
 const Contact = () => {
    const heroRef = useRef<HTMLDivElement>(null)
-  // State to manage the visibility of the form section
+
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false)
 useEffect(() => {
-    // Ensure we're on client before accessing GSAP/ScrollTrigger
     if (typeof window === 'undefined') return
 
     gsap.registerPlugin(ScrollTrigger)
@@ -37,13 +33,10 @@ useEffect(() => {
         '-=0.5'
       )
     }
-
-    // Optionally, return a cleanup if you add ScrollTriggers later
     return () => {
       tl.kill()
     }
   }, [])
-  // Reveal the form when the contact info section intersects the viewport
   useEffect(() => {
     const section = document.getElementById('contact-info')
     if (!section) return
@@ -51,11 +44,9 @@ useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // When at least 40% of the section is visible, show the form
           if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
             setIsFormVisible(true)
           } else if (window.scrollY < window.innerHeight * 0.2) {
-            // Hide again if user scrolls back to top significantly
             setIsFormVisible(false)
           }
         })
@@ -109,17 +100,15 @@ useEffect(() => {
 <div
   ref={heroRef}
   className="relative text-white py-24  bg-cover bg-center bg-no-repeat"
-  style={{ backgroundImage: "url('/images/about-bg.jpg')" }} // replace with your image path
+  style={{ backgroundImage: "url('/images/about-bg.jpg')" }} 
 >
-  <div className="absolute inset-0 bg-black/50"></div> {/* Dark overlay for readability */}
+  <div className="absolute inset-0 bg-black/50"></div> 
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center">
       <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-        Siddiqui Welfare Society
+      Contact Us
       </h1>
-      <p className="text-xl md:text-3xl max-w-4xl mx-auto leading-relaxed">
-        Global Medical & Educational Foundation
-      </p>
+  
       {/* <div className="mt-8 text-lg md:text-xl max-w-3xl mx-auto">
         <span className="text-yellow-300 font-semibold">Empathy in Action:</span> Transforming Lives of the Poor
       </div> */}
