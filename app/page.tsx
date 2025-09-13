@@ -13,8 +13,8 @@ import {
   FaTooth,
   FaHeartbeat,
 } from "react-icons/fa";
-import { stories, Story } from "./lib/stories";
-import { events } from "./lib/events";
+import { stories, Story } from "../lib/stories";
+import { events } from "../lib/events";
 import Link from "next/link";
 
 if (typeof window !== "undefined") {
@@ -28,7 +28,7 @@ const slides = [
   },
   {
     text: "Global Medical & Educational Foundation",
-    bg: "/images/bg-5.JPG",
+    bg: "/images/carts02.JPG",
   },
   {
     text: "Empowering Communities for a Better Tomorrow",
@@ -338,7 +338,7 @@ export default function Home() {
                 className={`flex flex-col md:flex-row items-center gap-8 ${idx % 2 === 1 ? "md:flex-row-reverse" : ""}`}
               >
                 <div className="w-full md:w-1/2 relative aspect-video rounded-lg overflow-hidden shadow-lg transform-gpu hover:scale-105 transition">
-                  <Image src={event.image} alt={event.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                  <Image src={event.image} alt={event.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" priority={idx < 2} />
                 </div>
                 <div className="w-full md:w-1/2">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{event.title}</h3>

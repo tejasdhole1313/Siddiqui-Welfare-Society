@@ -159,12 +159,7 @@ export default function AboutUs() {
             <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               About Us
             </h1>
-            <p className="text-xl md:text-3xl max-w-4xl mx-auto leading-relaxed">
-              Global Medical & Educational Foundation
-            </p>
-            {/* <div className="mt-8 text-lg md:text-xl max-w-3xl mx-auto">
-        <span className="text-yellow-300 font-semibold">Empathy in Action:</span> Transforming Lives of the Poor
-      </div> */}
+            
           </div>
         </div>
         {/* Animated background elements */}

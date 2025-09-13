@@ -1,7 +1,7 @@
 import React from 'react'
 import { menuItems } from '@/components/menu-items'
 import TopicCard from '@/components/TopicCard'
-import { topicItemsBySlug } from '@/app/lib/topic-items'
+import { topicItemsBySlug } from '@/lib/topic-items'
 
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

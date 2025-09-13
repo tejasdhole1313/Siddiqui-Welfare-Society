@@ -1,4 +1,4 @@
-import { stories, Story } from '@/app/lib/stories';
+import { stories, Story } from '@/lib/stories';
 import { notFound } from 'next/navigation';
 import NextImage from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next';

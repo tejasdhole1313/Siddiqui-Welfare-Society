@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { topicItemsBySlug } from '@/app/lib/topic-items'
+import { topicItemsBySlug } from '@/lib/topic-items'
 
 export default async function TopicDetailPage({ params }: { params: Promise<{ slug: string; id: string }> }) {
   const { slug, id } = await params

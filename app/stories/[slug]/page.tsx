@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import { stories } from "../../lib/stories";
+import { stories } from "../../../lib/stories";
 import Link from "next/link";
 
 export default async function StoryCategoryPage({ params }: { params: Promise<{ slug: string }> }) {

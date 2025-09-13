@@ -2,10 +2,12 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { events } from '@/app/lib/events'
-
+import { events } from '@/lib/events'
+import { useRouter } from 'next/navigation' // <-- import useRouter
 
 export default function Event() {
+  const router = useRouter(); // <-- initialize router
+
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
       {/* Hero Section */}
@@ -30,7 +32,6 @@ export default function Event() {
 
       {/* Event Listing */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-
         <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-3">
           {events.map((ev, i) => (
             <motion.div
@@ -47,9 +48,10 @@ export default function Event() {
                   src={ev.image}
                   alt={ev.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={i < 3}
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-               
               </div>
 
               {/* Content */}
@@ -60,14 +62,23 @@ export default function Event() {
                 <p className="text-gray-600 text-sm line-clamp-3">
                   {ev.description}
                 </p>
-                <motion.button
+
+                <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-4 inline-block bg-red-600 text-white text-sm px-4 py-2 rounded-full shadow hover:bg-red-700 focus:outline-none focus:ring ring-offset-2 ring-red-600 transition-700 transition"
-                onClick={() => window.location.href = `/event/${ev.id}`}
+                  className="mt-4 inline-block text-red-600 font-semibold cursor-pointer transition-colors duration-300 hover:text-red-700 focus-visible:outline-none"
+                  onClick={() => router.push(`/event/${ev.id}`)} 
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      router.push(`/event/${ev.id}`);
+                    }
+                  }}
                 >
                   View Details →
-                </motion.button>
+                </motion.div>
               </div>
             </motion.div>
           ))}

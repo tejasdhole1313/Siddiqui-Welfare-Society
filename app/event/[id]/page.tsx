@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import { events } from '../../lib/events'
+import { events } from '../../../lib/events'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -62,32 +62,34 @@ export default function EventDetail() {
 
 
             {/* Smaller images (same height/width using aspect-square) */}
-            <div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="object-cover"
-              />
+          <div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
+  <Image
+    src={event.image}
+    alt={event.title}
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-cover"
+  />
+</div>
+<div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
+  <Image
+    src={event.image}
+    alt={event.title}
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-cover"
+  />
+</div>
+<div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
+  <Image
+    src={event.image}
+    alt={event.title}
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-cover"
+  />
+</div>
 
-            </div>
-            <div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="object-cover"
-              />
-
-            </div>
           </div>
         </div>
 
