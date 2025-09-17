@@ -60,12 +60,6 @@ p {
   color: #374151;
 }
 
-/* Smooth focus states */
-*:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
 *:focus:not(:focus-visible) {
   outline: none;
 }

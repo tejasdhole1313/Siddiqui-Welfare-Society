@@ -156,91 +156,97 @@ export default function Home() {
   ];
 
   return (
-    <main ref={mainRef} className="bg-white text-gray-900 antialiased">
-      {/* HERO */}
-      <section
-        ref={heroContainerRef}
-        className="relative h-screen flex items-center justify-center text-white text-center overflow-hidden"
-        style={{ perspective: 1200 }}
+    <main ref={mainRef} className="bg-white text-gray-900 overflow-x-hidden">
+   {/* HERO */}
+<section
+  ref={heroContainerRef}
+  className="relative min-h-[100svh] pt-16 sm:pt-20 flex items-center justify-center text-white text-center overflow-hidden"
+  style={{ perspective: 1200 }}
+>
+  {/* dim layer */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 z-10" />
+
+  {/* layered parallax backgrounds */}
+  <div className="absolute inset-0 z-0">
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={`bg-${index}`}
+        className="hero-bg absolute inset-0 bg-cover bg-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.2 }}
+        style={{
+          backgroundImage: `url(${slides[index].bg})`,
+          willChange: "transform, opacity",
+        }}
+      />
+    </AnimatePresence>
+
+    {/* subtle foreground vignette */}
+    <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,0,0,0.3),transparent_40%)]" />
+    </div>
+  </div>
+
+  <div className="relative z-20 mx-auto max-w-5xl px-4">
+    <AnimatePresence mode="wait">
+      <motion.h1
+        key={`h1-${index}`}
+        ref={heroH1Ref}
+        className="hero-h1 text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+        initial={{ opacity: 0, y: 40, rotateY: -20 }}
+        animate={{ opacity: 1, y: 0, rotateY: 0 }}
+        exit={{ opacity: 0, y: -20, rotateY: 20 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          textShadow: "0 10px 30px rgba(0,0,0,0.5)",
+          transformStyle: "preserve-3d",
+        }}
       >
-        {/* dim layer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 z-10" />
+        {slides[index].text}
+      </motion.h1>
+    </AnimatePresence>
 
-        {/* layered parallax backgrounds */}
-        <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`bg-${index}`}
-              className="hero-bg absolute inset-0 bg-cover bg-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2 }}
-              style={{ backgroundImage: `url(${slides[index].bg})`, willChange: "transform, opacity" }}
-            />
-          </AnimatePresence>
+    <div className="mt-8 flex items-center justify-center gap-4">
+      <Link
+        href="/donation"
+        className="inline-flex items-center gap-3 px-5 py-2 sm:px-6 sm:py-3 rounded-full font-semibold bg-red-600 text-white shadow-lg text-sm sm:text-base 
+                   transform transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:brightness-110 hover:-translate-y-1 active:scale-95"
+      >
+        Donate
+      </Link>
+    </div>
+  </div>
 
-          {/* subtle foreground vignette */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(0,0,0,0.3),transparent_40%)]" />
-          </div>
-        </div>
+  {/* subtle animated shapes in corners */}
+  <motion.div
+    className="absolute left-6 bottom-6 w-28 h-28 rounded-full bg-red-600/20 blur-3xl z-10"
+    animate={{ y: [0, -6, 0] }}
+    transition={{ duration: 4, repeat: Infinity }}
+    aria-hidden
+  />
+</section>
 
-        <div className="relative z-20 mx-auto max-w-5xl">
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={`h1-${index}`}
-              ref={heroH1Ref}
-              className="hero-h1 text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
-              initial={{ opacity: 0, y: 40, rotateY: -20 }}
-              animate={{ opacity: 1, y: 0, rotateY: 0 }}
-              exit={{ opacity: 0, y: -20, rotateY: 20 }}
-              transition={{ duration: 0.8 }}
-              style={{ textShadow: "0 10px 30px rgba(0,0,0,0.5)", transformStyle: "preserve-3d" }}
-            >
-              {slides[index].text}
-            </motion.h1>
-          </AnimatePresence>
 
-       
+    {/* category filters */}
+<section className="py-12 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
+      {categoryFilters.map((item) => (
+       <Link
+  key={item.href}
+  href={item.href}
+  className="bg-white text-red-600 px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-semibold border-2 border-red-600
+             transition-all duration-300 hover:bg-red-600 hover:text-white hover:-translate-y-1 hover:shadow-lg"
+>
+  {item.label}
+</Link>
 
-         <div className="mt-8 flex items-center justify-center gap-4">
-  <Link
-    href="/donation"
-    className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold bg-red-600 text-white shadow-lg transform transition-all duration-300
-               hover:scale-110 hover:shadow-2xl hover:brightness-110 hover:-translate-y-1 active:scale-95"
-  >
-    Donate
-  </Link>
-</div>
-
-        </div>
-
-        {/* subtle animated shapes in corners */}
-        <motion.div
-          className="absolute left-6 bottom-6 w-28 h-28 rounded-full bg-red-600/20 blur-3xl z-10"
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-          aria-hidden
-        />
-      </section>
-
-      {/* category filters */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex flex-wrap justify-center gap-6">
-            {categoryFilters.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="bg-white text-red-600 px-5 py-2 rounded-full font-semibold border-2 border-red-600 transform transition-all duration-300 hover:bg-red-600 hover:text-white hover:-translate-y-1 hover:shadow-lg"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* TOP STORIES */}
       <section className="py-12 bg-white fade-in-section">
@@ -291,6 +297,7 @@ export default function Home() {
                 className="group p-4 rounded-lg transition-transform duration-300 hover:shadow-2xl bg-white"
                 onMouseMove={(e) => handleTilt(e, e.currentTarget as HTMLDivElement)}
                 onMouseLeave={() => resetTilt(document.querySelector(`[data-keyarea=\"${area.label}\"]`) as HTMLDivElement)}
+                onTouchStart={() => resetTilt(document.querySelector(`[data-keyarea=\"${area.label}\"]`) as HTMLDivElement)}
                 data-keyarea={area.label}
                 style={{ transformStyle: "preserve-3d" }}
               >
