@@ -1,21 +1,16 @@
 export interface TopicItem {
   id: number
-  
   title: string
-  // optional category label for UI grouping
   category?: string
   description: string
-  // optional long-form text (not currently used by UI)
   desc?: string
   image: string
   date: string
-  // slug this item belongs to, e.g., "educational"
   slug: string
-  // optional deep link to a detail page (can be wired later)
   path?: string
 }
 
-// Dummy data grouped by topic slug
+
 export const topicItemsBySlug: Record<string, TopicItem[]> = {
   educational: [
    {

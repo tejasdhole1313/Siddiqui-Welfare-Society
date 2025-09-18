@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import { events } from '../../../lib/events'
@@ -8,11 +9,9 @@ import { motion } from 'framer-motion'
 
 const heroRef = React.createRef<HTMLDivElement>()
 
-
 export default function EventDetail() {
   const params = useParams()
   const eventId = params.id
-
   const event = events.find(e => e.id.toString() === eventId)
 
   if (!event) {
@@ -33,7 +32,7 @@ export default function EventDetail() {
 
   return (
     <div className="min-h-screen bg-white">
-      
+      {/* Hero Section */}
       <div
         ref={heroRef}
         className="relative text-white py-28 mt-16 bg-cover bg-center bg-no-repeat"
@@ -54,70 +53,65 @@ export default function EventDetail() {
         </div>
       </div>
 
-  
+      {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
-          {/* Gallery */}
-          <div className="lg:col-span-3 relative z-0 grid grid-cols-3 gap-4">
-
-
-            {/* Smaller images (same height/width using aspect-square) */}
-          <div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
-  <Image
-    src={event.image}
-    alt={event.title}
-    fill
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    className="object-cover"
-  />
-</div>
-<div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
-  <Image
-    src={event.image}
-    alt={event.title}
-    fill
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    className="object-cover"
-  />
-</div>
-<div className="relative rounded-xl overflow-hidden shadow-md aspect-square">
-  <Image
-    src={event.image}
-    alt={event.title}
-    fill
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    className="object-cover"
-  />
-</div>
-
+          {/* Media Gallery */}
+          <div className="lg:col-span-3 relative z-0 grid grid-cols-2 md:grid-cols-3 gap-4">
+            {event.media?.map((item, idx) => (
+              <div
+                key={idx}
+                className="relative rounded-xl overflow-hidden shadow-md aspect-square"
+              >
+                {item.type === "image" ? (
+                  <Image
+                    src={item.src}
+                    alt={event.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <video
+                    src={item.src}
+                    controls
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Info */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 h-fit">
+        {/* Event Info */}
+        <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 h-fit mt-10">
           <h2 className="text-2xl font-bold text-gray-900">Event Details</h2>
           <div className="mt-4 space-y-4 text-gray-700">
             <div>
               <p className="text-sm text-gray-500">When</p>
               <p className="font-medium">{event.date}{event.time ? ` · ${event.time}` : ''}</p>
             </div>
-            <div>
-              <p className="  font-bold  text-2xl">About</p>
-              <h2 className='text-lg font-bold py-5'>{event.desctitle1} </h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc}</p>
-              <h2 className='text-lg font-bold py-5'>{event.desctitle2} </h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc2}</p>
-              <h2 className='text-lg font-bold py-5'>{event.desctitle3} </h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc3}</p>
-              <h2 className='text-lg font-bold py-5'>{event.desctitle4} </h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc4}</p>
-              <h2 className='text-lg font-bold py-5'>{event.desctitle5} </h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc5}</p>
 
+            <div>
+              <p className="font-bold text-2xl">About</p>
+              <h2 className="text-lg font-bold py-5">{event.desctitle1}</h2>
+              <p className="font-medium leading-relaxed text-justify">{event.desc}</p>
+              <h2 className="text-lg font-bold py-5">{event.desctitle2}</h2>
+              <p className="font-medium leading-relaxed text-justify">{event.desc2}</p>
+              <h2 className="text-lg font-bold py-5">{event.desctitle3}</h2>
+              <p className="font-medium leading-relaxed text-justify">{event.desc3}</p>
+              <h2 className="text-lg font-bold py-5">{event.desctitle4}</h2>
+              <p className="font-medium leading-relaxed text-justify">{event.desc4}</p>
+              <h2 className="text-lg font-bold py-5">{event.desctitle5}</h2>
+              <p className="font-medium leading-relaxed text-justify">{event.desc5}</p>
             </div>
           </div>
+
           <div className="mt-8">
-            <Link href="/event" className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold">
+            <Link
+              href="/event"
+              className="inline-flex items-center text-red-600 hover:text-red-700 font-semibold"
+            >
               <span aria-hidden="true" className="mr-1">&larr;</span>
               Back to All Events
             </Link>

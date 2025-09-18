@@ -3,10 +3,9 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { events } from '@/lib/events'
-import { useRouter } from 'next/navigation' // <-- import useRouter
+import Link from 'next/link'
 
 export default function Event() {
-  const router = useRouter(); // <-- initialize router
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
@@ -63,22 +62,15 @@ export default function Event() {
                   {ev.description}
                 </p>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-4 inline-block text-red-600 font-semibold cursor-pointer transition-colors duration-300 hover:text-red-700 focus-visible:outline-none"
-                  onClick={() => router.push(`/event/${ev.id}`)} 
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      router.push(`/event/${ev.id}`);
-                    }
-                  }}
-                >
-                  View Details →
-                </motion.div>
+                <Link href={`/event/${ev.id}`} passHref>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 inline-block text-red-600 font-semibold cursor-pointer transition-colors duration-300 hover:text-red-700 focus-visible:outline-none"
+                  >
+                    View Details →
+                  </motion.div>
+                </Link>
               </div>
             </motion.div>
           ))}

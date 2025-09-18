@@ -16,5 +16,6 @@ export const menuItems = [
     },
     { title: 'Donation', path: '/donation' },
     { title: 'Event', path: '/event' },
+    {title: 'News', path: '/News' },
     { title: 'Contact Us', path: '/contact' }
 ]
