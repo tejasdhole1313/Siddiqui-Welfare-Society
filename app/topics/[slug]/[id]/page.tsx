@@ -6,8 +6,6 @@ import { topicItemsBySlug } from '@/lib/topic-items'
 export default async function TopicDetailPage({ params }: { params: Promise<{ slug: string; id: string }> }) {
   const { slug, id } = await params
   const items = topicItemsBySlug[slug] || []
-
-  // Support title-based URLs and maintain backward compatibility with numeric IDs
   const decode = (v: string) => decodeURIComponent(v)
   const slugify = (s: string) =>
     s

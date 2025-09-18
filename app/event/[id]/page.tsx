@@ -89,7 +89,7 @@ export default function EventDetail() {
           <div className="mt-4 space-y-4 text-gray-700">
             <div>
               <p className="text-sm text-gray-500">When</p>
-              <p className="font-medium">{event.date}{event.time ? ` · ${event.time}` : ''}</p>
+          
             </div>
 
             <div>

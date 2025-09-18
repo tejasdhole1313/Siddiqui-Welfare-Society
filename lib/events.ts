@@ -4,8 +4,6 @@ export const events = [
     title: "Free Dialyses Health Program",
     description:
       "A healthcare initiative providing free diagnostic tests including blood tests, sugar level checks, blood pressure monitoring, and other essential screenings.",
-    date: "2024-10-06",
-    time: "9:00 AM",
     image: "/images/di-01.JPG",
     topEvent: true,
     media: [
@@ -29,15 +27,12 @@ export const events = [
     title: "Ambulance Service",
     description:
       "A special support program for hostel students, offering emergency ambulance services...",
-    date: "2025-09-25",
-    time: "All Day",
     image: "/images/ambulance001.jpeg",
     topEvent: true,
     media: [
       { type: "image", src: "/images/ambulance01.JPG" },
       { type: "image", src: "/images/ambulance02.jpg" },
-      { type: "image", src: "/images/ambulance03.PNG" },
-
+      { type: "image", src: "/images/ambulance03.PNG" }
     ],
     desctitle1: "Introduction",
     desc: `Siddiqui Welfare Society has launched the Free Ambulance Service...`,
@@ -55,15 +50,12 @@ export const events = [
     title: "Free Food Distribution Program",
     description:
       "Providing nutritious meals to underprivileged communities...",
-    date: "2025-09-20",
-    time: "10:00 AM",
     image: "/images/Acitivity03.JPG",
     media: [
       { type: "image", src: "/images/food03.jpeg" },
       { type: "video", src: "/images/foodvideo.mp4" },
       { type: "image", src: "/images/FOOD.jpeg" },
       { type: "image", src: "/images/foodnew.jpg" }
-
     ],
     desctitle1: "Introduction",
     desc: `Siddiqui Welfare Society has launched the Food Distribution Program...`,
@@ -81,15 +73,12 @@ export const events = [
     title: "Education & Skill Empowerment Program",
     description:
       "Free educational sessions and skill development classes...",
-    date: "2025-10-05",
-    time: "4:00 PM",
     image: "/images/class01.JPG",
     media: [
       { type: "image", src: "/images/class01.JPG" },
       { type: "video", src: "/images/classvideo.mp4" },
       { type: "image", src: "/images/class033.jpeg" },
-      { type: "image", src: "/images/class05.jpg" },
-
+      { type: "image", src: "/images/class05.jpg" }
     ],
     desctitle1: "Introduction",
     desc: `The Siddiqui Welfare Society has initiated the Education & Skill Empowerment Program...`,
@@ -107,8 +96,6 @@ export const events = [
     title: "Free Assistance Programme for Students",
     description:
       "Helping financially struggling students by offering partial or full support...",
-    date: "2025-10-12",
-    time: "11:00 AM",
     image: "/images/fessad01.JPG",
     media: [
       { type: "image", src: "/images/fessad01.JPG" },
@@ -131,19 +118,16 @@ export const events = [
     title: "200 Carts Distribution Program",
     description:
       "Supporting small vendors and self-employed individuals...",
-    date: "2025-10-22",
-    time: "3:00 PM",
     image: "/images/200cartlogo.jpeg",
     media: [
       { type: "image", src: "/images/car01.PNG" },
       { type: "image", src: "/images/200cart01.jpeg" },
-      { type: "image", src: "/images/200cart02.jpeg" } ,
+      { type: "image", src: "/images/200cart02.jpeg" },
       { type: "image", src: "/images/200cart03.jpeg" },
       { type: "image", src: "/images/200cart04.jpeg" },
       { type: "image", src: "/images/200cart06.JPG" },
       { type: "image", src: "/images/200cart07.JPG" },
       { type: "image", src: "/images/200cart08.JPG" }
-
     ],
     desctitle1: "Introduction",
     desc: `The Siddiqui Welfare Society has initiated the Carts Distribution Program...`,
@@ -161,14 +145,11 @@ export const events = [
     title: "10th Inter School General Knowledge Competition",
     description:
       "An exciting competition designed to enhance students' knowledge...",
-    date: "2025-11-15",
-    time: "10:30 AM",
     image: "/images/10th.JPG",
     media: [
       { type: "image", src: "/images/10th.JPG" },
       { type: "image", src: "/images/gk.JPG" },
-      { type: "image", src: "/images/gk02.jpg" },
-     
+      { type: "image", src: "/images/gk02.jpg" }
     ],
     desctitle1: "Introduction",
     desc: `The Siddiqui Welfare Society proudly presents the 10th edition...`,
@@ -186,8 +167,6 @@ export const events = [
     title: "Blood Donation Program",
     description:
       "A noble initiative dedicated to saving lives...",
-    date: "2025-12-05",
-    time: "9:00 AM",
     image: "/images/blood02.jpeg",
     media: [
       { type: "image", src: "/images/blood01.jpg" },
@@ -210,14 +189,12 @@ export const events = [
     title: "Women Self-Empowerment Program",
     description:
       "A dedicated program aimed at empowering women...",
-    date: "2026-01-20",
-    time: "11:00 AM",
     image: "/images/women02.jpg",
     media: [
       { type: "image", src: "/images/women04.jpg" },
       { type: "image", src: "/images/women033.JPG" },
       { type: "image", src: "/images/women01.jpg" },
-      { type: "image", src: "/images/women02.jpg" },
+      { type: "image", src: "/images/women02.jpg" }
     ],
     desctitle1: "Introduction",
     desc: `The Siddiqui Welfare Society proudly organizes the Women Self-Empowerment Program...`,
@@ -235,13 +212,10 @@ export const events = [
     title: "Charitable Clinic and Dental Service",
     description:
       "A healthcare initiative providing free medical consultations...",
-    date: "2026-02-10",
-    time: "9:30 AM",
     image: "/images/dental02.jpg",
     media: [
       { type: "image", src: "/images/dental01.jpg" },
-      { type: "image", src: "/images/dental02.jpg" },
-     
+      { type: "image", src: "/images/dental02.jpg" }
     ],
     desctitle1: "Introduction",
     desc: `The Siddiqui Welfare Society organizes a Charitable Clinic...`,

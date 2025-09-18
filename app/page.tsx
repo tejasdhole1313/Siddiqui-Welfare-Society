@@ -156,7 +156,7 @@ export default function Home() {
   ];
 
   return (
-    <main ref={mainRef} className="bg-white text-gray-900 overflow-x-hidden">
+    <main ref={mainRef} className="bg-white text-gray-900">
    {/* HERO */}
 <section
   ref={heroContainerRef}

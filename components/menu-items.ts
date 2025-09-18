@@ -7,10 +7,9 @@ export const menuItems = [
         subMenu: [
             { title: 'Educational', path: '/topics/educational' },
             { title: 'Medical', path: '/topics/medical' },
-            { title: 'Clinic', path: '/topics/clinic' },
-            { title: 'Dental', path: '/topics/dental' },       
-            { title: 'ECG', path: '/topics/ecg' },
             { title: 'Food & Meals', path: '/topics/food-meals' },
+           { title: 'Self Employment Program', path: '/topics/self-employment' },
+
              
         ]
     },

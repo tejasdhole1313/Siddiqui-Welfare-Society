@@ -3,14 +3,14 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
-
 const newsList = [
+  { id: 0, image: "/images/news.jpg" },
   { id: 1, image: "/images/news01.jpeg" },
   { id: 2, image: "/images/news02.jpeg" },
   { id: 3, image: "/images/news03.jpeg" },
   { id: 4, image: "/images/news04.jpeg" },
   { id: 5, image: "/images/news05.jpeg" },
-  { id: 6, image: "/images/news06.jpeg" },
+  { id: 6, image: "/images/nees06.jpeg" },
   { id: 7, image: "/images/news07.jpg" },
   { id: 8, image: "/images/news08.jpg" },
 ]
