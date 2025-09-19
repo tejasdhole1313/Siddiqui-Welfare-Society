@@ -6,14 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  FaHeart,
   FaUserGraduate,
   FaHandHoldingMedical,
   FaUtensils,
-  FaTooth,
-  FaHeartbeat,
+  FaBriefcase,
 } from "react-icons/fa";
-import { stories, Story } from "../lib/stories";
+// import { stories, Story } from "../lib/stories";
+import { topicItemsBySlug } from "@/lib/topic-items";
 import { events } from "../lib/events";
 import Link from "next/link";
 
@@ -135,10 +134,8 @@ export default function Home() {
   const keyAreas = [
     { label: "Education", icon: <FaUserGraduate />, href: "/topics/educational" },
     { label: "Medical", icon: <FaHandHoldingMedical />, href: "/topics/medical" },
-    { label: "Clinic", icon: <FaHeart />, href: "/topics/clinic" },
-    { label: "Dental", icon: <FaTooth />, href: "/topics/dental" },
-    { label: "ECG", icon: <FaHeartbeat />, href: "/topics/ecg" },
     { label: "Food & Meals", icon: <FaUtensils />, href: "/topics/food-meals" },
+    { label: "Self Employment Program", icon: <FaBriefcase />, href: "/topics/self-employment" },
   ];
 
   const impactStats = [
@@ -147,13 +144,13 @@ export default function Home() {
     { target: 5000, label: "Students Educated" },
   ];
 
-  const categoryFilters = [
-    { href: "/stories/top-stories", label: "Top Stories" },
-    { href: "/stories/latest-stories", label: "Latest Stories" },
-    { href: "/stories/activism", label: "Activism" },
-    { href: "/stories/community", label: "Community" },
-    { href: "/stories/culture", label: "Culture" },
-  ];
+  // const categoryFilters = [
+  //   { href: "/stories/top-stories", label: "Top Stories" },
+  //   { href: "/stories/latest-stories", label: "Latest Stories" },
+  //   { href: "/stories/activism", label: "Activism" },
+  //   { href: "/stories/community", label: "Community" },
+  //   { href: "/stories/culture", label: "Culture" },
+  // ];
 
   return (
     <main ref={mainRef} className="bg-white text-gray-900">
@@ -229,52 +226,40 @@ export default function Home() {
 </section>
 
 
-    {/* category filters */}
-<section className="py-12 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
-      {categoryFilters.map((item) => (
-       <Link
-  key={item.href}
-  href={item.href}
-  className="bg-white text-red-600 px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-semibold border-2 border-red-600
-             transition-all duration-300 hover:bg-red-600 hover:text-white hover:-translate-y-1 hover:shadow-lg"
->
-  {item.label}
-</Link>
+   
 
-      ))}
-    </div>
-  </div>
-</section>
-
-      {/* TOP STORIES */}
+      {/* TOP TOPICS */}
       <section className="py-12 bg-white fade-in-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Top Stories by Category</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Top Topics</h2>
 
+          {/* Show top 3 topic cards: Education, Medical, Food & Meals */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {["Education", "Medical", "Community", "Culture", "Activism", "Top Stories"].map((categoryName, idx) => {
-              let storyToShow: Story | undefined | null = null;
-              if (categoryName === "Top Stories") {
-                storyToShow = stories.find((story) => story.topStory);
-              } else {
-                storyToShow = stories.find((story) => story.category === categoryName && story.topStory);
-                if (!storyToShow) storyToShow = stories.find((story) => story.category === categoryName);
-              }
-              if (!storyToShow) return null;
-
+            {[
+              { label: "Education", slug: "educational" },
+              { label: "Medical", slug: "medical" },
+              { label: "Food & Meals", slug: "food-meals" },
+            ].map((topic, idx) => {
+              const items = topicItemsBySlug[topic.slug as keyof typeof topicItemsBySlug] || [];
+              const first = items[0];
+              if (!first) return null;
               return (
-                <Card3D key={`cat-${idx}-${storyToShow.id}`}>
-                  <Link href={`/stories/${encodeURIComponent(categoryName.replace(/\s+/g, "-").toLowerCase())}`} className="block h-full">
+                <Card3D key={`top-topic-${idx}-${first.id}`}>
+                  <Link href={`/topics/${topic.slug}/${encodeURIComponent(
+                    first.title
+                      .toLowerCase()
+                      .trim()
+                      .replace(/[^a-z0-9]+/g, '-')
+                      .replace(/(^-|-$)/g, '')
+                  )}`} className="block h-full">
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-                      <Image src={storyToShow.image} alt={storyToShow.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                      <span className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">{storyToShow.category}</span>
+                      <Image src={first.image} alt={first.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <span className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">{first.category || topic.label}</span>
                     </div>
                     <div className="p-5">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{storyToShow.title}</h3>
-                      <p className="text-gray-600 line-clamp-3">{storyToShow.description}</p>
-                      <p className="text-sm text-gray-500 mt-3">{new Date(storyToShow.date).toLocaleDateString('en-CA')}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{first.title}</h3>
+                      <p className="text-gray-600 line-clamp-3">{first.description}</p>
+                      <p className="text-sm text-gray-500 mt-3">{new Date(first.date).toLocaleDateString('en-CA')}</p>
                     </div>
                   </Link>
                 </Card3D>
@@ -283,14 +268,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* KEY AREAS */}
       <section className="py-16 bg-gray-50 fade-in-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Key Areas of Focus</h2>
           <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">We are dedicated to uplifting communities through targeted programs in critical areas.</p>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
             {keyAreas.map((area) => (
               <div
                 key={area.label}
