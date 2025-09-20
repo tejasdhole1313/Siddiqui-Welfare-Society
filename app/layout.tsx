@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-// Using system fonts in offline build; Google Fonts disabled
 import "./globals.css";
 import Navbar from "@/components/Navbar/page";
 import Footer from "@/components/Footer";
-
-// Fallback CSS variables for fonts are defined in globals.css
-
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NODE_ENV === 'production' 
     ? process.env.NEXTAUTH_URL || 'https://yourdomain.com' 

@@ -23,7 +23,7 @@ export const stories: Story[] = [
     image: "/images/student02.JPG",
     date: "2024-10-08",
     desc:
-      "The Siddiqui Welfare Society (SWS) has been making significant strides in empowering underprivileged communities through a range of educational and skill development programs. With a strong focus on academic education, computer technology-related training, and self-employment initiatives, SWS has been instrumental in equipping individuals with the tools they need to break the cycle of poverty and achieve economic independence.\n\nOne of the flagship programs offered by SWS is the provision of basic computer training in areas such as desktop publishing (DTP), Microsoft Office, and Tally, among others. Recognizing the increasing importance of computer literacy in today's digital age, SWS has been proactive in ensuring that individuals from marginalized backgrounds are not left behind. By imparting these essential skills, SWS is enabling participants to enhance their employability and access a wider range of job opportunities in various industries.\n\nThe computer training courses provided by SWS go beyond just technical skills; they also aim to instill confidence and empower individuals to navigate the digital landscape with ease. Participants are given the opportunity to develop proficiency in fundamental software applications, thus enabling them to become more competitive in the job market and better equipped to pursue higher education or vocational training.",
+      "The Siddiqui Welfare Society (SWS) has been making significant strides in empowering underprivileged communities through a range of educational and skill development programs. With a strong focus on academic education, computer technology-related training, and self-employmen initiatives, SWS has been instrumental in equipping individuals with the tools they need to break the cycle of poverty and achieve economic independence.\n\nOne of the flagship programs offered by SWS is the provision of basic computer training in areas such as desktop publishing (DTP), Microsoft Office, and Tally, among others. Recognizing the increasing importance of computer literacy in today's digital age, SWS has been proactive in ensuring that individuals from marginalized backgrounds are not left behind. By imparting these essential skills, SWS is enabling participants to enhance their employability and access a wider range of job opportunities in various industries.\n\nThe computer training courses provided by SWS go beyond just technical skills; they also aim to instill confidence and empower individuals to navigate the digital landscape with ease. Participants are given the opportunity to develop proficiency in fundamental software applications, thus enabling them to become more competitive in the job market and better equipped to pursue higher education or vocational training.",
     topStory: true,
   },
   {
@@ -159,28 +159,31 @@ export const latest: Story[] = [
 // Events
 export const events = [
   {
-    id: 1,
-    title: "Free Dialyses Health Program",
-    description:
-      "A healthcare initiative providing free diagnostic tests including blood tests, sugar level checks, blood pressure monitoring, and other essential screenings.",
-    image: "/images/di-01.JPG",
-    topEvent: true,
-    media: [
-      { type: "image", src: "/images/dialysis02.jpg" },
-      { type: "image", src: "/images/di-01.JPG" },
-      { type: "video", src: "/images/dialysis-video01.mp4" },
-    ],
-    desctitle1: "Introduction",
-    desctitle2: "Addressing Healthcare Needs :",
-    desctitle3: "Quality Care for All",
-    desctitle4: "Community Empowerment",
-    desctitle5: "Promoting Preventive Healthcare",
-    desc: `Siddiqui Welfare Society has launched Diagnostic Free Health Checkup Campaigns aimed at improving community well-being...`,
-    desc2: "In many communities, people neglect preventive healthcare due to financial limitations or lack of awareness...",
-    desc3: "The campaigns emphasize equitable access to healthcare...",
-    desc4: "These health checkup drives not only improve physical well-being...",
-    desc5: "Early diagnosis is key to reducing the long-term impact of chronic illnesses...",
-  },
+     id: 1,
+  title: "Free Dialysis Health Program",
+  description:
+    "A healthcare initiative providing free diagnostic tests including blood tests, sugar level checks, blood pressure monitoring, and other essential screenings.",
+  image: "/images/di-01.JPG",
+  topEvent: true,
+  media: [
+    { type: "image", src: "/images/dialysis02.jpg" },
+    { type: "image", src: "/images/di-01.JPG" },
+    { type: "video", src: "/images/dialysis-video01.mp4" },
+  ],
+  desc: `
+  Siddiqui Welfare Society has launched Diagnostic Free Health Checkup Campaigns aimed at improving community well-being... 
+
+  **Introduction:** Siddiqui Welfare Society has been instrumental in addressing the healthcare needs of underprivileged communities, particularly individuals suffering from kidney diseases. Through its commendable initiative of providing free dialysis, the organization has significantly enhanced the accessibility of life-saving treatment for those who are unable to afford it. One of the pivotal aspects of this program is the installation of dialysis machines in various hospitals, making this essential medical service available at no cost to those in need.
+
+  **Addressing Healthcare Disparities:** In many parts of the world, access to dialysis treatment remains a challenge for economically disadvantaged individuals. Siddiqui Welfare Society has taken a proactive approach to bridge this gap by establishing a network of free dialysis centers. This initiative has not only saved lives but has also alleviated the financial burden on the underprivileged, offering them a chance for a healthier and more productive life.
+  **Addressing Healthcare Disparities:** In many parts of the world, access to dialysis treatment remains a challenge for economically disadvantaged individuals. Siddiqui Welfare Society has taken a proactive approach to bridge this gap by establishing a network of free dialysis centers. This initiative has not only saved lives but has also alleviated the financial burden on the underprivileged, offering them a chance for a healthier and more productive life.
+  **Addressing Healthcare Disparities:** In many parts of the world, access to dialysis treatment remains a challenge for economically disadvantaged individuals. Siddiqui Welfare Society has taken a proactive approach to bridge this gap by establishing a network of free dialysis centers. This initiative has not only saved lives but has also alleviated the financial burden on the underprivileged, offering them a chance for a healthier and more productive life.
+
+  **Quality Care for All:** The provision of free dialysis services demonstrates the organization’s commitment to ensuring that individuals from all walks of life receive high-quality medical care, irrespective of their financial standing. By installing dialysis machines in various hospitals, the NGO has extended the reach of this critical treatment, thereby positively impacting the lives of countless individuals and their families.
+
+  **Empowering Communities:** The impact of Siddiqui Welfare Society's free dialysis program extends beyond the realm of healthcare. By enabling equitable access to this vital service, the organization has empowered underprivileged communities, offering them hope and a renewed sense of well-being. The program not only saves lives but also fosters a sense of solidarity and compassion within society.
+  `,
+},
   {
     id: 2,
     title: "Ambulance Service",
@@ -282,7 +285,6 @@ export const events = [
     media: [
       { type: "image", src: "/images/car01.PNG" },
       { type: "image", src: "/images/200cart01.jpeg" },
-      { type: "image", src: "/images/200cart02.jpeg" },
       { type: "image", src: "/images/200cart03.jpeg" },
       { type: "image", src: "/images/200cart04.jpeg" },
       { type: "image", src: "/images/200cart06.JPG" },
