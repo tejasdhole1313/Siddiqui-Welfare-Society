@@ -14,6 +14,25 @@ export default function AboutUs() {
   const missionRef = useRef<HTMLDivElement>(null)
   const teamRef = useRef<HTMLDivElement>(null)
   const activitiesRef = useRef<HTMLDivElement>(null)
+  const objectivesRef = useRef<HTMLDivElement>(null);
+if (objectivesRef.current) {
+  gsap.fromTo(
+    objectivesRef.current.children,
+    { y: 50, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: objectivesRef.current,
+        start: "top 80%",
+      },
+    }
+  );
+}
+
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -204,7 +223,7 @@ export default function AboutUs() {
           <div ref={imageRef} className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
               <Image
-                src="/images/About01.png"
+                src="/images/ABOUT.JPG"
                 alt="Siddiqui Welfare Society Foundation"
                 width={600}
                 height={400}
@@ -388,6 +407,100 @@ export default function AboutUs() {
           </div>
         </div>
 
+{/* Key Objectives & Activities Section */}
+<div ref={objectivesRef} className="mb-24">
+  <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
+    Key <span className="text-red-600">Objectives</span> & <span className="text-red-600">Activities</span>
+  </h2>
+
+  <div className="space-y-16 max-w-5xl mx-auto text-gray-800 text-justify text-lg leading-relaxed">
+    {/* Objective 1: Education Support */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">1. Education Support</h3>
+      <p>
+        Education is a fundamental right, yet millions in underprivileged communities lack access to quality learning.
+        Siddiqui Welfare Society addresses this through:
+      </p>
+      <ul className="list-disc pl-6 mt-4 space-y-2">
+        <li><strong>Scholarships & Educational Resources:</strong> Financial help, books, uniforms, and supplies to students—especially 100 kids of single mothers or widows (2025-2026).</li>
+        <li><strong>Literacy Programs:</strong> Adult education, with focus on women and rural populations.</li>
+        <li><strong>Vocational Training:</strong> Tailoring, computers, handicrafts, and more for self-reliance.</li>
+      </ul>
+    </div>
+
+    {/* Objective 2: Healthcare Services */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">2. Healthcare Services</h3>
+      <ul className="list-disc pl-6 mt-2 space-y-2">
+        <li><strong>Free Medical Camps:</strong> Mobile health units, diagnostics, and medication in remote areas.</li>
+        <li><strong>Awareness Campaigns:</strong> Hygiene, maternal health, nutrition, and disease prevention.</li>
+        <li><strong>Hospital Collaborations:</strong> Subsidized/free critical care including Free Dialysis Project (2000+ patients with PACIFIC Hospital).</li>
+        <li><strong>Ambulance Services:</strong> Running successfully for 15 years for government and private hospitals.</li>
+        <li><strong>Charitable Dental Clinic:</strong> Serving 50 patients daily at no cost.</li>
+        <li><strong>Financial Help:</strong> For expensive medical tests and treatments.</li>
+      </ul>
+    </div>
+
+    {/* Objective 3: Poverty Alleviation */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">3. Poverty Alleviation</h3>
+      <ul className="list-disc pl-6 mt-2 space-y-2">
+        <li><strong>Food Drives:</strong> Monthly, especially during Ramadan—groceries and essentials for the needy.</li>
+        <li><strong>Financial Aid:</strong> Widows, orphans, disabled individuals supported directly.</li>
+        <li><strong>Livelihood Support:</strong> Microfinance for small businesses and self-reliance projects.</li>
+      </ul>
+    </div>
+
+    {/* Objective 4: Community Development */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">4. Community Development</h3>
+      <ul className="list-disc pl-6 mt-2 space-y-2">
+        <li><strong>Infrastructure Projects:</strong> Water wells, sanitation, and tool donations (e.g., rickshaws, electrical kits).</li>
+        <li><strong>Women’s Empowerment:</strong> Sewing machines, food production units, leadership training.</li>
+        <li><strong>Support for 200+ Women:</strong> Through donated equipment and income-generating workshops.</li>
+      </ul>
+    </div>
+
+    {/* Objective 5: Disaster Relief */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">5. Disaster Relief</h3>
+      <ul className="list-disc pl-6 mt-2 space-y-2">
+        <li>Emergency relief: Food, clean water, and shelter during flooding near Khaam River.</li>
+        <li>Free food during COVID-19 pandemic and AgniVeer Recruitment Drives.</li>
+        <li>Restoring livelihoods and long-term assistance in emergencies.</li>
+      </ul>
+    </div>
+
+    {/* Core Values */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">Core Values</h3>
+      <ul className="list-disc pl-6 mt-2 space-y-2">
+        <li><strong>Compassion:</strong> Every action is rooted in empathy.</li>
+        <li><strong>Transparency:</strong> Public audits and fund tracking ensure trust.</li>
+        <li><strong>Inclusivity:</strong> All communities are welcomed, regardless of background.</li>
+        <li><strong>Sustainable Impact:</strong> Long-term outcomes prioritized over short-term fixes.</li>
+      </ul>
+    </div>
+
+    {/* Geographical Reach */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">Geographical Reach</h3>
+      <p>
+        Operating from Chh. Sambhaji Nagar (Aurangabad), the society covers Marathwada and Northern Telangana. It aims to expand to other underserved regions globally.
+      </p>
+    </div>
+
+    {/* How to Contribute */}
+    <div>
+      <h3 className="text-2xl font-bold text-red-600 mb-4">How to Contribute</h3>
+      <ul className="list-disc pl-6 mt-2 space-y-2">
+        <li><strong>Donations:</strong> Securely accepted via the official website.</li>
+        <li><strong>Volunteering:</strong> Open to local and international supporters.</li>
+        <li><strong>Partnerships:</strong> NGO, corporate, and government collaborations welcome.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
       </div>
     </div>

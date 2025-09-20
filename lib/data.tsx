@@ -1,6 +1,3 @@
-// Centralized data module combining events, stories, latest, and topic items
-
-// Shared Story interface (desc optional so it covers both latest and stories arrays)
 export interface Story {
   id: number;
   category: string;
@@ -11,8 +8,6 @@ export interface Story {
   topStory: boolean;
   desc?: string;
 }
-
-// Stories
 export const stories: Story[] = [
   {
     id: 1,
@@ -48,7 +43,6 @@ export const stories: Story[] = [
   },
 ];
 
-// Latest (uses the same Story interface; desc is optional)
 export const latest: Story[] = [
   {
     id: 1,
@@ -167,7 +161,7 @@ export const events = [
     { type: "video", src: "/images/dialysis-video01.mp4" },
   ],
 desc: (
-  <>
+  <div>
     <p >
       <strong>Introduction:</strong> Siddiqui Welfare Society has been
       instrumental in addressing the healthcare needs of underprivileged
@@ -217,7 +211,7 @@ desc: (
       proactive approach ensures that communities are educated on preventive
       measures, reducing the risk of kidney-related ailments in the long term.
     </p>
-  </>
+  </div>
 ),
 
 
@@ -236,7 +230,7 @@ desc: (
 
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> Siddiqui Welfare Society has launched the Free Ambulance Service to ensure timely and accessible emergency medical transportation for underprivileged individuals. This initiative is part of the organization&apos;s broader commitment to enhancing healthcare accessibility and saving lives in critical situations where every second counts.
     </p>
@@ -256,7 +250,7 @@ desc: (
     <p>
       <strong>Promoting Preventive Healthcare:</strong> While the primary objective is emergency response, Siddiqui Welfare Society also leverages the visibility of the ambulance service to promote preventive healthcare practices. Through community outreach, health awareness sessions, and distribution of informative materials, the organization encourages early detection, regular check-ups, and healthier lifestyles to reduce the need for emergency intervention.
     </p>
-  </>
+  </div>
 )
 
 
@@ -275,7 +269,7 @@ desc: (
       { type: "image", src: "/images/foodnew.jpg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society runs a dedicated Free Food Distribution Program at government hospitals and medical centers to support patients, their families, and underprivileged individuals who often go without proper nutrition during medical treatment.
     </p>
@@ -315,7 +309,7 @@ desc: (
     <p>
       <strong>Impact and Growth:</strong> To date, the Free Food Distribution Program has served more than <strong>100,000+ meals</strong> across all centers combined. Feedback is regularly collected from recipients and hospital administrators to improve the service further.
     </p>
-  </>
+  </div>
 ),
 
   },
@@ -332,7 +326,7 @@ desc: (
       { type: "image", src: "/images/class05.jpg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society has initiated the Education & Skill Empowerment Program to uplift underprivileged youth and adults through free access to quality education and practical skill-building opportunities. The initiative aims to break the cycle of poverty by empowering individuals with knowledge and abilities that create long-term pathways to success.
     </p>
@@ -352,7 +346,7 @@ desc: (
     <p>
       <strong>Community and Career Impact:</strong> By investing in education and skills, the program creates ripple effects that benefit not just individuals, but entire communities. Participants are better equipped to secure employment, start small businesses, or support their families—leading to long-term community development and self-reliance.
     </p>
-  </>
+  </div>
 ),
 
   },
@@ -368,7 +362,7 @@ desc: (
       { type: "image", src: "/images/freeassis03.jpeg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society has introduced the College Fee Support Program under its Free Assistance Programme for Students. This initiative is designed to ensure that deserving students from low-income families can pursue higher education without the burden of financial constraints. The goal is to promote academic continuity and reduce dropout rates due to tuition affordability issues.
     </p>
@@ -388,7 +382,7 @@ desc: (
     <p>
       <strong>A Step Toward Empowerment:</strong> The College Fee Support Program reflects Siddiqui Welfare Society&apos;s broader commitment to youth empowerment, social mobility, and nation-building. By removing financial barriers, the organization enables students to dream big, achieve academic success, and contribute meaningfully to society.
     </p>
-  </>
+  </div>
 ),
 
 
@@ -409,7 +403,7 @@ desc: (
       { type: "image", src: "/images/200cart08.JPG" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society has initiated the 200 Vegetable Carts Distribution Program to promote sustainable livelihoods among unemployed and underprivileged individuals. This initiative provides fully equipped vegetable carts to deserving beneficiaries, enabling them to start or grow their own small businesses in local markets.
     </p>
@@ -429,7 +423,7 @@ desc: (
     <p>
       <strong>Sustainable Economic Impact:</strong> By enabling micro-businesses at the grassroots level, the program contributes to local economies, encourages food accessibility through mobile vegetable vendors, and helps uplift entire communities. Many recipients go on to expand their operations or employ others, multiplying the program&apos;s long-term impact.
     </p>
-  </>
+  </div>
 ),
 
 
@@ -446,7 +440,7 @@ desc: (
       { type: "image", src: "/images/gk02.jpg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society proudly presents the 10th edition of its flagship event — the Inter School General Knowledge Competition. This milestone edition celebrates a decade of nurturing curiosity, intellect, and healthy competition among school students from diverse backgrounds.
     </p>
@@ -466,7 +460,7 @@ desc: (
     <p>
       <strong>Celebrating Knowledge and Growth:</strong> The event concludes with an awards ceremony recognizing top-performing teams, schools, and individuals. Certificates, trophies, and educational gifts are distributed to encourage continued learning and motivate future participation. Every student walks away enriched, confident, and inspired.
     </p>
-  </>
+  </div>
 ),
 
   },
@@ -482,7 +476,7 @@ desc: (
       { type: "image", src: "/images/blood03.jpg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society is organizing a large-scale Blood Donation Program to support hospitals, emergency services, and patients in need of critical care. As part of its ongoing commitment to community welfare, the Society is mobilizing volunteers and the public to come forward and donate blood that could help save hundreds of lives.
     </p>
@@ -502,7 +496,7 @@ desc: (
     <p>
       <strong>Celebrating Humanity:</strong> The camp concludes with acknowledgment certificates, refreshments, and words of gratitude for all donors. It&apos;s not just a medical drive — it&apos;s a celebration of compassion, selflessness, and the belief that every individual has the power to save a life.
     </p>
-  </>
+  </div>
 ),
 
   },
@@ -519,7 +513,7 @@ desc: (
       { type: "image", src: "/images/women02.jpg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society proudly organizes the Women Self-Empowerment Program to uplift women from marginalized communities by providing them with the tools, knowledge, and support needed to become independent and confident contributors to society.
     </p>
@@ -539,7 +533,7 @@ desc: (
     <p>
       <strong>Celebrating Empowerment:</strong> The program concludes by recognizing the efforts and achievements of participants, celebrating their progress, and inspiring others to join the movement towards gender equality and women&apos;s empowerment.
     </p>
-  </>
+  </div>
 ),
 
   },
@@ -554,7 +548,7 @@ desc: (
       { type: "image", src: "/images/dental02.jpg" },
     ],
 desc: (
-  <>
+  <div>
     <p>
       <strong>Introduction:</strong> The Siddiqui Welfare Society organizes a Charitable Clinic aimed at providing accessible and free healthcare services to underserved communities. This initiative focuses on both general health check-ups and specialized dental care, ensuring holistic well-being for all beneficiaries.
     </p>
@@ -574,10 +568,46 @@ desc: (
     <p>
       <strong>A Step Toward Healthier Lives:</strong> The event concludes by encouraging regular health and dental check-ups, empowering individuals to take charge of their health. The Siddiqui Welfare Society remains committed to expanding these services and improving community health outcomes.
     </p>
-  </>
+  </div>
 ),
 
   },
+  {
+  id: 11,
+  title: "COVID-19 Crisis Response and Community Support",
+  description:
+    "An emergency humanitarian response to support vulnerable communities during the COVID-19 pandemic with food, sanitation, and healthcare aid.",
+  image: "/images/COVID191.jpg",
+  media: [
+    { type: "image", src: "/images/COVID19.jpEG" },
+    { type: "image", src: "/images/COVID191.jpg" },
+
+  ],
+  desc: (
+    <div>
+      <p>
+        <strong>Emergency Response:</strong> During the peak of the COVID-19 pandemic, the Siddiqui Welfare Society launched a comprehensive relief initiative to support the most affected communities, including daily wage workers, homeless individuals, and vulnerable families.
+      </p>
+
+      <p>
+        <strong>Free Meal Distribution:</strong> The organization served thousands of cooked meals daily across Chh. Sambhaji Nagar (Aurangabad) and nearby regions. Special focus was given to patients and families near hospitals and containment zones.
+      </p>
+
+      <p>
+        <strong>Health & Hygiene Kits:</strong> To help prevent the spread of the virus, hygiene kits including masks, sanitizers, and soaps were distributed. The society also held awareness campaigns about COVID-19 safety protocols.
+      </p>
+
+      <p>
+        <strong>Support for Frontline Workers:</strong> The initiative extended assistance to healthcare workers, police, and sanitation staff by providing PPE kits, food packets, and appreciation tokens.
+      </p>
+
+      <p>
+        <strong>Ongoing Support:</strong> The Siddiqui Welfare Society continues to monitor post-COVID recovery needs and is committed to providing sustained support through healthcare, education, and livelihood programs.
+      </p>
+    </div>
+  ),
+}
+
 ];
 
 // Topic Items
