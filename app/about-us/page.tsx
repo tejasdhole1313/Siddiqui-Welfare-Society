@@ -176,9 +176,7 @@ export default function AboutUs() {
             </h2>
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
               <p>
-                <strong>When asked, which the highest form of knowledge is, Bill Buffett rightly answered – empathy!</strong>
-                That&apos;s because when we cultivate empathy, our ego gets dissolved and we expand our sense of self. It
-                enables us to connect with other&apos;s experiences for a shared humanity.
+             Siddiqui Welfare Society is non-profit organization and non-governmental organization (NGO) committed to social welfare, community development, and humanitarian aid. Established with the vision of uplifting underprivileged communities, the society operates with a mission to provide sustainable solutions to poverty, illiteracy, and healthcare disparities. Through a range of initiatives. Siddiqui Welfare Society strives to create a positive impact on society by addressing the most pressing challenges faced by marginalized populations. 
               </p>
               <p>
                 Siddiqui Welfare Society&apos;s Global Foundation bears this ideology as the driving force behind their endeavours.

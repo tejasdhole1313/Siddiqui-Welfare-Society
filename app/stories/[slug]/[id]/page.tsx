@@ -111,7 +111,6 @@ export default async function StoryDetailPage({ params }: Props) {
 
         <div className="prose prose-lg prose-red mx-auto">
           <p className="lead">{story.description}</p>
-          {story.desc && <p>{story.desc}</p>}
           {/* You can add more detailed story content here */}
         </div>
       </article>

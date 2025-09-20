@@ -89,10 +89,11 @@ function Footer() {
               Plot No:84, Arif Housing Society, Chhatrapati Sambhajinagar
               (Aurangabad), Maharashtra 431001
             </p>
+            <p className="text-gray-300">Phone: 91 99605 89100</p>
             <div className="mt-2">
-            <p className="text-gray-300">
-           <span className='font-semibold text-white'> Email:</span>   <a href="mailto:siddiquisociety@gmail.com" className=" hover:text-white">siddiquisociety@gmail.com</a>
-            </p>
+              <a href="mailto:siddiquisociety@gmail.com" className="text-gray-300 pt-3 hover:text-white transition-colors duration-300">
+                <span className='font-semibold text-white px-2'>Email :</span>siddiquisociety@gmail.com
+              </a>
             </div>
           </div>
 

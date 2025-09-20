@@ -144,16 +144,9 @@ export default function Home() {
     { target: 5000, label: "Students Educated" },
   ];
 
-  // const categoryFilters = [
-  //   { href: "/stories/top-stories", label: "Top Stories" },
-  //   { href: "/stories/latest-stories", label: "Latest Stories" },
-  //   { href: "/stories/activism", label: "Activism" },
-  //   { href: "/stories/community", label: "Community" },
-  //   { href: "/stories/culture", label: "Culture" },
-  // ];
 
   return (
-    <main ref={mainRef} className="bg-white text-gray-900  overflow-x-hidden">
+    <main ref={mainRef} className="bg-white text-gray-900 overflow-hidden  ">
    {/* HERO */}
 <section
   ref={heroContainerRef}

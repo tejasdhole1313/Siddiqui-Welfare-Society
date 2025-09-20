@@ -57,53 +57,44 @@ export default function EventDetail() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
           {/* Media Gallery */}
-          <div className="lg:col-span-3 relative z-0 grid grid-cols-2 md:grid-cols-3 gap-4">
-            {event.media?.map((item, idx) => (
-              <div
-                key={idx}
-                className="relative rounded-xl overflow-hidden shadow-md aspect-square"
-              >
-                {item.type === "image" ? (
-                  <Image
-                    src={item.src}
-                    alt={event.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    controls
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
+        {/* Media Gallery */}
+<div className="lg:col-span-3 relative z-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  {event.media?.map((item, idx) => (
+    <div
+      key={idx}
+      className="relative rounded-xl overflow-hidden shadow-md aspect-square"
+    >
+      {item.type === "image" ? (
+        <Image
+          src={item.src}
+          alt={event.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+        />
+      ) : (
+        <video
+          src={item.src}
+          controls
+          className="w-full h-full object-cover"
+        />
+      )}
+    </div>
+  ))}
+</div>
+
         </div>
 
         {/* Event Info */}
         <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 h-fit mt-10">
           <h2 className="text-2xl font-bold text-gray-900">Event Details</h2>
-          <div className="mt-4 space-y-4 text-gray-700">
-            <div>
-              <p className="text-sm text-gray-500">When</p>
-          
-            </div>
+          <div className="mt-4 space-y-4 text-gray-700 font-medium leading-relaxed text-justify">
+           
 
             <div>
-              <p className="font-bold text-2xl">About</p>
-              <h2 className="text-lg font-bold py-5">{event.desctitle1}</h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc}</p>
-              <h2 className="text-lg font-bold py-5">{event.desctitle2}</h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc2}</p>
-              <h2 className="text-lg font-bold py-5">{event.desctitle3}</h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc3}</p>
-              <h2 className="text-lg font-bold py-5">{event.desctitle4}</h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc4}</p>
-              <h2 className="text-lg font-bold py-5">{event.desctitle5}</h2>
-              <p className="font-medium leading-relaxed text-justify">{event.desc5}</p>
+            
+              {event.desc}
+            
             </div>
           </div>
 
