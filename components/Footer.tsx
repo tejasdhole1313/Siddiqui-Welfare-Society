@@ -11,12 +11,8 @@ import NextImage from 'next/image'
 function Footer() {
   const [currentYear, setCurrentYear] = useState<number | null>(null)
   const footerRef = useRef<HTMLElement>(null)
-
   useLayoutEffect(() => {
-    // Set year client-side to avoid SSR hydration mismatch
     setCurrentYear(new Date().getFullYear())
-
-    // GSAP Context for safe animation setup and cleanup
     const ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger)
 
@@ -89,13 +85,14 @@ function Footer() {
               Plot No:84, Arif Housing Society, Chhatrapati Sambhajinagar
               (Aurangabad), Maharashtra 431001
             </p>
-            <p className="text-gray-300">Phone: 9960589100</p>
+          <div className="mt-2">
             <p className="text-gray-300">
-              Phone: <a href="tel:9960589100" className="hover:text-white transition-colors duration-300">9960589100</a>
+              <span className='font-semibold text-white '> Phone:</span> <a href="tel:9960589100" className="hover:text-white transition-colors duration-300">9960589100</a>
             </p>
+          </div>
             <div className="mt-2">
-              <a href="mailto:siddiquisociety@gmail.com" className="text-gray-300 pt-3 hover:text-white transition-colors duration-300">
-                <span className='font-semibold text-white px-2'>Email :</span>siddiquisociety@gmail.com
+              <a href="mailto:siddiquisociety@gmail.com" className="text-gray-300  hover:text-white transition-colors duration-300">
+                <span className='font-semibold text-white '>Email :</span>siddiquisociety@gmail.com
               </a>
             </div>
           </div>

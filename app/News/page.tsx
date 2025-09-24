@@ -4,15 +4,15 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
 const newsList = [
-  { id: 0, image: "/images/news.jpg" },
-  { id: 1, image: "/images/news01.jpeg" },
-  { id: 2, image: "/images/news02.jpeg" },
-  { id: 3, image: "/images/news03.jpeg" },
-  { id: 4, image: "/images/news04.jpeg" },
-  { id: 5, image: "/images/news05.jpeg" },
-  { id: 6, image: "/images/nees06.jpeg" },
-  { id: 7, image: "/images/news07.jpg" },
-  { id: 8, image: "/images/news08.jpg" },
+  { id: 0, image: "/images/news.png" },
+  { id: 1, image: "/images/news01.png" },
+  { id: 2, image: "/images/news02.png" },
+  { id: 3, image: "/images/news03.png" },
+  { id: 4, image: "/images/news04.png" },
+  { id: 5, image: "/images/news05.png" },
+  { id: 6, image: "/images/nees06.png" },
+  { id: 7, image: "/images/news07.png" },
+  { id: 8, image: "/images/news08.png" },
 ]
 
 export default function News() {
@@ -23,7 +23,7 @@ export default function News() {
       {/* Hero Section */}
       <div
         className="relative text-white py-24 mt-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
+        style={{ backgroundImage: "url('/images/about-bg.png')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

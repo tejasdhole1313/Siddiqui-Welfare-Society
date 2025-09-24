@@ -15,7 +15,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   return (
     <div className="min-h-screen w-full bg-[#f7f7f7]">
       {/* Hero */}
-      <div className="relative text-white py-16 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/about-bg.jpg')" }}>
+      <div className="relative text-white py-16 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/about-bg.png')" }}>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold">{topic?.title}</h1>

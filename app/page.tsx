@@ -11,7 +11,6 @@ import {
   FaUtensils,
   FaBriefcase,
 } from "react-icons/fa";
-// import { stories, Story } from "../lib/stories";
 import { topicItemsBySlug } from "@/lib/topic-items";
 import { events } from "../lib/events";
 import Link from "next/link";
@@ -23,15 +22,15 @@ if (typeof window !== "undefined") {
 const slides = [
   {
     text: "Siddiqui Welfare Society",
-    bg: "/images/bg-01.JPG",
+    bg: "/images/bg-01.png",
   },
   {
     text: "Global Medical & Educational Foundation",
-    bg: "/images/carts02.JPG",
+    bg: "/images/cartlogo.png",
   },
   {
     text: "Empowering Communities for a Better Tomorrow",
-    bg: "/images/bg-03.JPG",
+    bg: "/images/bg-03.png",
   },
 ];
 

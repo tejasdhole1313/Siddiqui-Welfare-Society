@@ -117,7 +117,7 @@ export default function Donation() {
       <div
         ref={heroRef}
         className="relative text-white py-28 mt-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
+        style={{ backgroundImage: "url('/images/about-bg.png')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

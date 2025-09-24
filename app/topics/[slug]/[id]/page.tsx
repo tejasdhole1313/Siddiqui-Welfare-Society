@@ -35,7 +35,7 @@ export default async function TopicDetailPage({ params }: { params: Promise<{ sl
   return (
     <div className="min-h-screen w-full bg-[#f7f7f7]">
       {/* Hero */}
-      <div className="relative text-white py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/about-bg.jpg')" }}>
+      <div className="relative text-white py-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/about-bg.png')" }}>
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* <h1 className="text-xl sm:text-3xl font-bold max-w-xl">{item.title}</h1> */}

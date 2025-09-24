@@ -36,7 +36,7 @@ export default function EventDetail() {
       <div
         ref={heroRef}
         className="relative text-white py-28 mt-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/images/about-bg.jpg')` }}
+        style={{ backgroundImage: `url('/images/about-bg.png')` }}
       >
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,12 +87,7 @@ export default function EventDetail() {
         <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 h-fit mt-10">
           <h2 className="text-2xl font-bold text-gray-900">Event Details</h2>
           <div className="mt-4 space-y-4 text-gray-700">
-
-            <div>
-            
-              <p className="font-medium leading-relaxed text-justify">{event.desc}</p>
-            
-            </div>
+            <div className="leading-relaxed text-justify">{event.desc}</div>
           </div>
 
           <div className="mt-8">

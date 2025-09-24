@@ -15,7 +15,7 @@ export const stories: Story[] = [
     title: "Empowering Communities Through Computer Training",
     description:
       "Making significant strides in empowering underprivileged communities through a range of educational and skill development programs.",
-    image: "/images/student02.JPG",
+    image: "/images/student02.png",
     date: "2024-10-08",
     topStory: true,
   },
@@ -37,7 +37,7 @@ export const stories: Story[] = [
     description:
       "Thousands of underprivileged families benefited from our recent large-scale food and ration distribution initiative.",
 
-    image: "/images/foodnew.jpg",
+    image: "/images/foodnew.png",
     date: "2024-10-25",
     topStory: false,
   },
@@ -147,17 +147,27 @@ export const latest: Story[] = [
 ];
 
 // Events
+export interface Event {
+  id: number
+  title: string
+  description: string
+  image: string
+  topEvent?: boolean
+  media?: { type: 'image' | 'video'; src: string }[]
+  desc?: React.ReactNode
+}
+
 export const events = [
   {
      id: 1,
   title: "Free Dialysis Health Program",
   description:
     "A healthcare initiative providing free diagnostic tests including blood tests, sugar level checks, blood pressure monitoring, and other essential screenings.",
-  image: "/images/di-01.JPG",
+  image: "/images/di-01.png",
   topEvent: true,
   media: [
-    { type: "image", src: "/images/dialysis02.jpg" },
-    { type: "image", src: "/images/di-01.JPG" },
+    { type: "image", src: "/images/dialysis02.png" },
+    { type: "image", src: "/images/di-01.png" },
     { type: "video", src: "/images/dialysis-video01.mp4" },
   ],
 desc: (
@@ -221,12 +231,12 @@ desc: (
     title: "Ambulance Service",
     description:
       "A special support program for hostel students, offering emergency ambulance services...",
-    image: "/images/ambulance01.JPG",
+    image: "/images/ambulance01.png",
     topEvent: true,
     media: [
-      { type: "image", src: "/images/ambulance001.jpeg" },
-      { type: "image", src: "/images/ambulance02.jpg" },
-      { type: "image", src: "/images/ambulance03.PNG" },
+      { type: "image", src: "/images/ambulance001.png" },
+      { type: "image", src: "/images/ambulance02.png" },
+      { type: "image", src: "/images/ambulance03.png" },
 
     ],
 desc: (
@@ -261,12 +271,11 @@ desc: (
 
     description:
       "Providing nutritious meals to underprivileged communities...",
-    image: "/images/Acitivity03.JPG",
+    image: "/images/Acitivity03.png",
     media: [
-      { type: "image", src: "/images/food03.jpeg" },
+      { type: "image", src: "/images/food03.png" },
       { type: "video", src: "/images/foodvideo.mp4" },
-      { type: "image", src: "/images/FOOD.jpeg" },
-      { type: "image", src: "/images/foodnew.jpg" },
+      { type: "image", src: "/images/foodnew.png" },
     ],
 desc: (
   <div>
@@ -318,12 +327,12 @@ desc: (
     title: "Education & Skill Empowerment Program",
     description:
       "Free educational sessions and skill development classes...",
-    image: "/images/class01.JPG",
+    image: "/images/class01.png",
     media: [
-      { type: "image", src: "/images/class01.JPG" },
+      { type: "image", src: "/images/class01.png" },
       { type: "video", src: "/images/classvideo.mp4" },
-      { type: "image", src: "/images/class033.jpeg" },
-      { type: "image", src: "/images/class05.jpg" },
+      { type: "image", src: "/images/class033.png" },
+      { type: "image", src: "/images/class05.png" },
     ],
 desc: (
   <div>
@@ -355,11 +364,11 @@ desc: (
     title: "Free Assistance Programme for school & college Students",
     description:
       "Helping financially struggling students by offering partial or full support...",
-    image: "/images/fessad01.JPG",
+    image: "/images/fessad01.png",
     media: [
-      { type: "image", src: "/images/fessad01.JPG" },
-      { type: "image", src: "/images/freeassis02.jpeg" },
-      { type: "image", src: "/images/freeassis03.jpeg" },
+      { type: "image", src: "/images/fessad01.png" },
+      { type: "image", src: "/images/freeassis02.png" },
+      { type: "image", src: "/images/freeassis03.png" },
     ],
 desc: (
   <div>
@@ -392,15 +401,17 @@ desc: (
     title: "200 Carts Distribution Program",
     description:
       "Supporting small vendors and self-employed individuals...",
-    image: "/images/200cartlogo.jpeg",
+    image: "/images/cartlogo.png",
     media: [
-      { type: "image", src: "/images/car01.PNG" },
-      { type: "image", src: "/images/200cart01.jpeg" },
-      { type: "image", src: "/images/200cart03.jpeg" },
-      { type: "image", src: "/images/200cart04.jpeg" },
-      { type: "image", src: "/images/200cart06.JPG" },
-      { type: "image", src: "/images/200cart07.JPG" },
-      { type: "image", src: "/images/200cart08.JPG" },
+      { type: "image", src: "/images/cartphoto02.png" },
+      { type: "image", src: "/images/cart01.png" },
+      { type: "image", src: "/images/cart02.png" },
+      { type: "image", src: "/images/cart03.png" },
+      { type: "image", src: "/images/cart04.png" },
+      { type: "image", src: "/images/cart05.png" },
+      { type: "image", src: "/images/cart06.png" },
+      { type: "image", src: "/images/cart07.png" },
+
     ],
 desc: (
   <div>
@@ -433,11 +444,11 @@ desc: (
     title: "10th Inter School General Knowledge Competition",
     description:
       "An exciting competition designed to enhance students' knowledge...",
-    image: "/images/10th.JPG",
+    image: "/images/10th.png",
     media: [
-      { type: "image", src: "/images/10th.JPG" },
-      { type: "image", src: "/images/gk.JPG" },
-      { type: "image", src: "/images/gk02.jpg" },
+      { type: "image", src: "/images/10th.png" },
+      { type: "image", src: "/images/gk.png" },
+      { type: "image", src: "/images/gk02.png" },
     ],
 desc: (
   <div>
@@ -469,11 +480,11 @@ desc: (
     title: "Blood Donation Program",
     description:
       "A noble initiative dedicated to saving lives...",
-    image: "/images/blood02.jpeg",
+    image: "/images/blood02.png",
     media: [
-      { type: "image", src: "/images/blood01.jpg" },
-      { type: "image", src: "/images/blood02.jpeg" },
-      { type: "image", src: "/images/blood03.jpg" },
+      { type: "image", src: "/images/blood01.png" },
+      { type: "image", src: "/images/blood02.png" },
+      { type: "image", src: "/images/blood03.png" },
     ],
 desc: (
   <div>
@@ -505,12 +516,12 @@ desc: (
     title: "Women Self-Empowerment Program",
     description:
       "A dedicated program aimed at empowering women...",
-    image: "/images/women02.jpg",
+    image: "/images/women02.png",
     media: [
-      { type: "image", src: "/images/women04.jpg" },
-      { type: "image", src: "/images/women033.JPG" },
-      { type: "image", src: "/images/women01.jpg" },
-      { type: "image", src: "/images/women02.jpg" },
+      { type: "image", src: "/images/women04.png" },
+      { type: "image", src: "/images/women033.png" },
+      { type: "image", src: "/images/women01.png" },
+      { type: "image", src: "/images/women02.png" },
     ],
 desc: (
   <div>
@@ -542,10 +553,10 @@ desc: (
     title: "Charitable Clinic and Dental Service",
     description:
       "A healthcare initiative providing free medical consultations...",
-    image: "/images/dental02.jpg",
+    image: "/images/dental02.png",
     media: [
-      { type: "image", src: "/images/dental01.jpg" },
-      { type: "image", src: "/images/dental02.jpg" },
+      { type: "image", src: "/images/dental01.png" },
+      { type: "image", src: "/images/dental02.png" },
     ],
 desc: (
   <div>
@@ -577,10 +588,10 @@ desc: (
   title: "COVID-19 Crisis Response and Community Support",
   description:
     "An emergency humanitarian response to support vulnerable communities during the COVID-19 pandemic with food, sanitation, and healthcare aid.",
-  image: "/images/COVID191.jpg",
+  image: "/images/covid01.png",
   media: [
-    { type: "image", src: "/images/COVID19.jpEG" },
-    { type: "image", src: "/images/COVID191.jpg" },
+    { type: "image", src: "/images/covid.png" },
+    { type: "image", src: "/images/covid01.png" },
 
   ],
   desc: (
@@ -655,7 +666,7 @@ It&apos;s more than just learning how to use a computer—it's about breaking cy
 
 With a mission to educate, uplift, and empower, Siddiqui Welfare Society continues to shine as a beacon of hope in underprivileged areas of Aurangabad and beyond.`,
 
-      image: "/images/class01.JPG",
+      image: "/images/class01.png",
       date: "10/6/2024",
     },
     {
@@ -688,7 +699,7 @@ This image captures the spirit of empowerment—where technology becomes an equa
 
 SWS believes that education should be a **right, not a privilege**, and continues to bring that vision to life, one student at a time.`,
 
-      image: "/images/class05.jpg",
+      image: "/images/class05.png",
       date: "10/3/2024",
     },
    {
@@ -714,7 +725,7 @@ More than 100 students were honored during this event. For some, it was their fi
 By celebrating learning milestones, SWS inspires entire communities to pursue personal development. This recognition ceremony serves as a strong motivator for future batches and sets a precedent for excellence, resilience, and hope.
 
 Siddiqui Welfare Society continues to be a beacon of empowerment through accessible, affordable, and quality education for all, especially the underprivileged and underserved.`,
-  image: "/images/gk.JPG", 
+  image: "/images/gk.png", 
   date: "9/30/2024"
 },
     {
@@ -731,7 +742,7 @@ Through food distribution drives, community engagement programs, and personalize
 
 This long-standing commitment reflects SWS's vision of empowering communities, fostering hope, and transforming lives through consistent, selfless service. Its 15-year legacy stands as a testament to dedication, kindness, and social impact.`,
 
-      image: "/images/gk02.jpg",
+      image: "/images/gk02.png",
       date: "9/29/2024",
     },
    {
@@ -779,7 +790,7 @@ The competition also highlighted the role of technology in modern education, wit
 As the event concluded, students left with a sense of accomplishment, new knowledge, and enhanced confidence. Teachers and mentors expressed pride in their students’ performance, while parents were gratified to witness their children&apos;s growth and potential.
 
 Overall, the International General Knowledge Competition 2024-25 exemplified the Siddiqui Welfare Society&apos;s dedication to nurturing young minds, promoting academic excellence, and fostering a supportive and inclusive learning environment. By combining competition, education, mentorship, and community engagement, the Society continues to inspire future generations to achieve their full potential and contribute meaningfully to society.`,
-  image: "/images/10th.JPG",
+  image: "/images/10th.png",
   date: "2024-09-30"
 },
     {
@@ -806,7 +817,7 @@ Through continuous engagement with students, families, and educational instituti
 
 This programme represents Siddiqui Welfare Society&apos;s unwavering commitment to breaking barriers to education and fostering an environment where every student has the opportunity to thrive. By investing in education, SWS empowers individuals to build better futures for themselves and their communities, embodying the transformative power of compassion and social support.`,
 
-      image: "/images/freeassis02.jpeg",
+      image: "/images/freeassis02.png",
       date: "9/23/2024",
     },
   ],
@@ -819,7 +830,7 @@ This programme represents Siddiqui Welfare Society&apos;s unwavering commitment 
         "Providing Hope and Health: The Impact of Free Dialysis Program by Siddiqui Welfare Society",
       description:
         "Siddiqui Welfare Society has been instrumental in addressing the healthcare needs of underprivileged communities, particularly individuals suffering from kidney diseases. Through its commendable initiative of providing free dialysis, the organization has significantly enhanced the accessibility of life-saving treatment for those who are unable to afford it.",
-      image: "/images/di-01.JPG",
+      image: "/images/di-01.png",
       desc: `The Siddiqui Welfare Society (SWS) has long been committed to improving healthcare access for underprivileged communities, and its Free Dialysis Program stands as a shining example of this mission. Recognizing that kidney disease is a serious and often life-threatening condition that disproportionately affects those with limited financial resources, SWS has taken proactive steps to ensure that patients receive the treatment they need without the burden of cost.
 
 Through this initiative, the Society provides regular dialysis sessions to individuals suffering from chronic kidney disease. The program is designed to support both immediate and long-term medical needs, offering patients a lifeline that allows them to continue their daily lives with dignity and hope.
@@ -854,7 +865,7 @@ SWS&apos;s ambulance fleet is strategically deployed to reach underserved and re
 Beyond immediate emergency response, the Ambulance Service also raises awareness about health, safety, and emergency preparedness. Volunteers engage with communities to educate them on how to access emergency services, basic first aid practices, and the importance of quick medical intervention.
 
 Through compassionate, reliable, and professional service, the Siddiqui Welfare Society&apos;s Ambulance Service embodies the organization&apos;s commitment to saving lives and improving community health. By making emergency medical care accessible to all, SWS continues to foster safer, healthier communities where help is always available when it is needed most.`,
-      image: "/images/ambulance01.JPG",
+      image: "/images/ambulance01.png",
       date: "9/30/2024",
     },
    {
@@ -878,7 +889,7 @@ Through this program, Siddiqui Welfare Society reinforced its commitment to holi
 The initiative also strengthened community engagement, as local residents witnessed the value of collective action and the impact of non-profit support. By prioritizing both general health and dental care, SWS not only provides immediate relief but also empowers communities to adopt healthier lifestyles.
 
 This Medicine & Dental Care initiative exemplifies the Society&apos;s broader mission of promoting accessible, affordable, and comprehensive healthcare for all, particularly for those who face economic and social challenges. Through sustained efforts, SWS continues to improve lives, restore hope, and build healthier, stronger communities.`,
-  image: "/images/dental01.JPG",
+  image: "/images/dental01.png",
   date: "2024-09-29"
 },
    {
@@ -902,7 +913,7 @@ Beyond the immediate health benefits, these drives build a sense of solidarity a
 Through sustained campaigns over the past 15 years, Siddiqui Welfare Society has helped save countless lives, proving the power of organized, community-driven initiatives. The Blood Donation Program exemplifies the organization&apos;s mission of compassion, service, and empowerment, ensuring that even the most vulnerable have access to life-saving medical resources.
 
 By continuing these efforts, SWS reinforces the message that small acts of kindness, such as donating blood, can have a profound impact on the lives of others. The campaign highlights the importance of civic responsibility, healthcare awareness, and collective action in building a healthier, more resilient community.`,
-  image: "/images/blood02.jpeg",
+  image: "/images/blood02.png",
   date: "2024-09-29"
 }
 
@@ -929,7 +940,7 @@ Through sustained efforts, the Siddiqui Welfare Society&apos;s Ration Distributi
 By providing consistent access to nutritious food, SWS not only addresses physical hunger but also enables beneficiaries to focus on education, employment, and other aspects of personal and community development. The program embodies the belief that no one should go to bed hungry and that access to basic necessities is a fundamental human right.
 
 Through this initiative, Siddiqui Welfare Society continues to be a beacon of hope, demonstrating how organized, compassionate action can transform lives, strengthen communities, and inspire future generations to contribute positively to society.`,
-  image: "/images/200cart01.jpeg",
+  image: "/images/200cart01.png",
   date: "2024-09-30"
 },
    {
@@ -951,7 +962,7 @@ Distribution drives are carefully planned, with designated locations, schedules,
 Through this initiative, Siddiqui Welfare Society ensures that no one in the community goes hungry. The program strengthens community resilience, promotes social welfare, and demonstrates the transformative impact of organized, compassionate action.
 
 By combining immediate relief with community education and support, SWS empowers individuals and families to improve their well-being and build better futures. The Food & Grocery Distribution Drive remains a cornerstone of the Society&apos;s commitment to social service, hope, and empowerment.`,
-  image: "/images/200cart07.JPG",
+  image: "/images/cart03.png",
   date: "2022-10-25"
 },
    {
@@ -971,7 +982,7 @@ The program emphasizes community engagement, with volunteers interacting with pa
 By providing free meals and food supplies at critical locations such as government hospitals and medical centers, Siddiqui Welfare Society alleviates immediate challenges faced by patients and families. This initiative not only addresses hunger but also promotes health, wellness, and social support, ensuring that those undergoing medical treatment can focus on healing without worrying about their next meal.
 
 Through sustained efforts, the Free Food Distribution Program demonstrates SWS&apos;s commitment to compassionate service, social welfare, and community empowerment. By addressing both nutritional and emotional needs, the Society continues to build stronger, healthier communities and inspire collective responsibility for those in need.`,
-  image: "/images/foodnew.jpg",
+  image: "/images/foodnew.png",
   date: "2022-10-25"
 },
    {
@@ -993,7 +1004,7 @@ Distribution drives are carefully organized with scheduled timings and designate
 Through consistent execution, the Free Food Distribution Program has reached hundreds of patients and families, providing both physical nourishment and emotional comfort. It exemplifies Siddiqui Welfare Society&apos;s commitment to holistic community welfare, addressing immediate needs while promoting long-term well-being.
 
 By combining compassionate service with community education and logistical support, SWS ensures that patients and attendants receive timely meals, reducing stress and enhancing recovery. This program reflects the organization&apos;s vision of building healthier, more resilient communities through practical support and empathy.`,
-  image: "/images/food03.jpeg",
+  image: "/images/food03.png",
   date: "2022-10-25"
 }
 
@@ -1018,7 +1029,7 @@ By providing sewing machines, training, and mentorship, Siddiqui Welfare Society
 Over the years, this initiative has transformed the lives of numerous women, enabling them to contribute meaningfully to their families and communities. By promoting self-employment and skill-based income generation, SWS continues to foster resilience, dignity, and long-term sustainability for women in need.
 
 Through the Sewing Machine Distribution Program, Siddiqui Welfare Society exemplifies its commitment to empowering women, promoting self-reliance, and creating opportunities for economic growth and personal development.`,
-  image: "/images/women02.jpg",
+  image: "/images/women02.png",
   date: "2024-09-30"
 },
    {
@@ -1042,7 +1053,7 @@ The program also emphasizes social responsibility and ethical entrepreneurship. 
 Through these multifaceted efforts, Siddiqui Welfare Society has transformed countless lives by providing tools, knowledge, and opportunities for economic empowerment. The initiative has not only improved household incomes but also strengthened social cohesion, encouraged gender equality, and inspired a culture of self-reliance and resilience.
 
 By bridging the gap between skill development and income generation, SWS exemplifies a holistic approach to empowerment. The society continues to innovate and expand its programs, ensuring that every individual has the opportunity to achieve financial stability, personal growth, and a meaningful role within their community.`,
-  image: "/images/auto01.jpg",
+  image: "/images/auto01.png",
   date: "2022-10-25"
 }
   ],

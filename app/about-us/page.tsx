@@ -170,7 +170,7 @@ if (objectivesRef.current) {
       <div
         ref={heroRef}
         className="relative text-white py-24 mt-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/about-bg.jpg')" }}
+        style={{ backgroundImage: "url('/images/about-bg.png')" }}
       >
         <div className="absolute inset-0 bg-black/50"></div> {/* Dark overlay for readability */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +223,7 @@ if (objectivesRef.current) {
           <div ref={imageRef} className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
               <Image
-                src="/images/ABOUT.JPG"
+                src="/images/about.png"
                 alt="Siddiqui Welfare Society Foundation"
                 width={600}
                 height={400}
@@ -252,7 +252,7 @@ if (objectivesRef.current) {
             {/* Education */}
             <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-500 overflow-hidden">
               <Image
-                src="/images/Acitivity04.png"
+                src="/images/acitivity04.png"
                 alt="Educational Assistance"
                 width={1200}
                 height={400}
@@ -308,7 +308,7 @@ if (objectivesRef.current) {
             {/* Activity 1 */}
             <div>
               <Image
-                src="/images/Acitivity01.png"
+                src="/images/acitivity01.png"
                 alt="Aiding small businesses"
                 width={1200}
                 height={400}
@@ -322,7 +322,7 @@ if (objectivesRef.current) {
             {/* Activity 2 */}
             <div>
               <Image
-                src="/images/Acitivity02.JPG"
+                src="/images/acitivity02.png"
                 alt="Career guidance camps"
                 width={1200}
                 height={400}
@@ -336,7 +336,7 @@ if (objectivesRef.current) {
             {/* Activity 3 */}
             <div>
               <Image
-                src="/images/Acitivity03.JPG"
+                src="/images/acitivity03.png"
                 alt="Food distribution"
                 width={1200}
                 height={400}
