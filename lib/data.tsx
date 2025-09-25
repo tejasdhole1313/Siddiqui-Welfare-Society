@@ -70,7 +70,7 @@ export const latest: Story[] = [
     title: "Providing Hope with Free Dialysis Program",
     description:
       "Our commendable initiative of providing quality dialysis treatment has enhanced the accessibility for those who are unable to afford it.",
-    image: "/images/.png",
+    image: "/images/cart01.png",
     date: "2024-10-06",
     topStory: true,
   },
