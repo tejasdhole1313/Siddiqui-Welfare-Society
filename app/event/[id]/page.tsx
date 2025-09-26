@@ -9,10 +9,14 @@ import { motion } from 'framer-motion'
 
 const heroRef = React.createRef<HTMLDivElement>()
 
+const generateSlug = (title: string) => {
+  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+}
+
 export default function EventDetail() {
   const params = useParams()
-  const eventId = params.id
-  const event = events.find(e => e.id.toString() === eventId)
+  const slug = params.id as string
+  const event = events.find(e => generateSlug(e.title) === slug)
 
   if (!event) {
     return (

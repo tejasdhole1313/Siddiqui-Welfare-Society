@@ -5,6 +5,10 @@ import { motion } from 'framer-motion'
 import { events } from '@/lib/events'
 import Link from 'next/link'
 
+const generateSlug = (title: string) => {
+  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+}
+
 export default function Event() {
 
   return (
@@ -55,9 +59,11 @@ export default function Event() {
 
         {/* Content */}
         <div className="p-6 flex flex-col flex-grow">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
-            {ev.title}
-          </h3>
+          <Link href={`/event/${generateSlug(ev.title)}`} className="block">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+              {ev.title}
+            </h3>
+          </Link>
           <p className="text-gray-600 text-sm line-clamp-3">
             {ev.description}
           </p>
@@ -65,7 +71,7 @@ export default function Event() {
           {/* Bottom-right link */}
            <div className="mt-auto pt-4 flex justify-end ">
     <Link
-      href={`/event/${ev.id}`}
+      href={`/event/${generateSlug(ev.title)}`}
       className="inline-flex items-center text-red-600 font-semibold transition-colors duration-300 hover:text-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-md"
     >
       <motion.span
