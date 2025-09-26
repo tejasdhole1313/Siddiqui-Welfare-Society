@@ -940,7 +940,7 @@ Through sustained efforts, the Siddiqui Welfare Society&apos;s Ration Distributi
 By providing consistent access to nutritious food, SWS not only addresses physical hunger but also enables beneficiaries to focus on education, employment, and other aspects of personal and community development. The program embodies the belief that no one should go to bed hungry and that access to basic necessities is a fundamental human right.
 
 Through this initiative, Siddiqui Welfare Society continues to be a beacon of hope, demonstrating how organized, compassionate action can transform lives, strengthen communities, and inspire future generations to contribute positively to society.`,
-  image: "/images/200cart01.png",
+  image: "/images/cart01.png",
   date: "2024-09-30"
 },
    {
