@@ -271,7 +271,7 @@ desc: (
 
     description:
       "Providing nutritious meals to underprivileged communities...",
-    image: "/images/Acitivity03.png",
+    image: "/images/acitivity03.png",
     media: [
       { type: "image", src: "/images/food03.png" },
       { type: "video", src: "/images/foodvideo.mp4" },
