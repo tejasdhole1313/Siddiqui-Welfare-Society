@@ -236,7 +236,7 @@ desc: (
     media: [
       { type: "image", src: "/images/ambulance001.png" },
       { type: "image", src: "/images/ambulance02.png" },
-      { type: "image", src: "/images/ambulance03.png" },
+      { type: "image", src: "/images/ambulance03.PNG" },
 
     ],
 desc: (
